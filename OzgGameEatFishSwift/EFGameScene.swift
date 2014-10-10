@@ -44,17 +44,23 @@ class EFGameScene: EFBaseScene {
         self.showBlister("blister_left", position: CGPointMake(self.size.width / 2 - 300, 120))
         self.showBlister("blister_right", position: CGPointMake(self.size.width / 2 + 300, 120))
         
-        //test anim
-        var player = EFObjPlayerNode()
-        player.position = CGPointMake(self.size.width / 2, self.size.height / 2)
-        self.addChild(player)
-        player.playAnim()
-        
         //所有的鱼元素都在这个Node
         var fishNode = SKNode()
         fishNode.position = CGPoint.zeroPoint
         fishNode.name = "fish_node"
         self.addChild(fishNode)
+        
+        //test anim
+        var player = EFObjPlayerNode()
+        player.position = CGPointMake(self.size.width / 2, self.size.height / 2)
+        fishNode.addChild(player)
+        
+        player.orientationRight() //test
+        player.cump() //test
+        
+        var jellyFish = EFObjJellyfishNode()
+        jellyFish.position = CGPointMake(self.size.width / 2, 450)
+        fishNode.addChild(jellyFish)
         
         var stageNumLab = SKLabelNode(text: NSLocalizedString("GameScene_LabStage", tableName: nil, comment: "Stage").stringByAppendingFormat("%i", self.m_stageNum!))
         stageNumLab.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Center
@@ -161,6 +167,7 @@ class EFGameScene: EFBaseScene {
         self.addChild(blisterLeft)
     }
     
+    //暂停
     func scenePause() {
         
     }

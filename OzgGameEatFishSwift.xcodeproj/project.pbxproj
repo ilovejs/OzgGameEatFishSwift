@@ -59,7 +59,6 @@
 		89F9961A19CD04DB00A91DEC /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9961919CD04DB00A91DEC /* GameConfig.swift */; };
 		89F9961C19CD051700A91DEC /* EFObjBaseFishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9961B19CD051700A91DEC /* EFObjBaseFishNode.swift */; };
 		89F9961E19CD052400A91DEC /* EFObjFishData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9961D19CD052400A91DEC /* EFObjFishData.swift */; };
-		89F9962019CD053300A91DEC /* EFObjBaseEnemyFishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9961F19CD053300A91DEC /* EFObjBaseEnemyFishNode.swift */; };
 		89F9962219CD054700A91DEC /* EFObjJellyfishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9962119CD054700A91DEC /* EFObjJellyfishNode.swift */; };
 		89F9962419CD055800A91DEC /* EFObjPlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9962319CD055800A91DEC /* EFObjPlayerNode.swift */; };
 /* End PBXBuildFile section */
@@ -131,7 +130,6 @@
 		89F9961919CD04DB00A91DEC /* GameConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		89F9961B19CD051700A91DEC /* EFObjBaseFishNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjBaseFishNode.swift; sourceTree = "<group>"; };
 		89F9961D19CD052400A91DEC /* EFObjFishData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjFishData.swift; sourceTree = "<group>"; };
-		89F9961F19CD053300A91DEC /* EFObjBaseEnemyFishNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjBaseEnemyFishNode.swift; sourceTree = "<group>"; };
 		89F9962119CD054700A91DEC /* EFObjJellyfishNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjJellyfishNode.swift; sourceTree = "<group>"; };
 		89F9962319CD055800A91DEC /* EFObjPlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjPlayerNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,7 +238,6 @@
 				89F9961719CD04B100A91DEC /* EFStartScene.swift */,
 				89F9961D19CD052400A91DEC /* EFObjFishData.swift */,
 				89F9961B19CD051700A91DEC /* EFObjBaseFishNode.swift */,
-				89F9961F19CD053300A91DEC /* EFObjBaseEnemyFishNode.swift */,
 				89F9962319CD055800A91DEC /* EFObjPlayerNode.swift */,
 				89F9962119CD054700A91DEC /* EFObjJellyfishNode.swift */,
 				89104A1619CD33C200CA223E /* EFObjEnemyFishNode.swift */,
@@ -418,7 +415,6 @@
 				89F9961619CD049B00A91DEC /* EFGameScene.swift in Sources */,
 				89F9961A19CD04DB00A91DEC /* GameConfig.swift in Sources */,
 				89104A1719CD33C200CA223E /* EFObjEnemyFishNode.swift in Sources */,
-				89F9962019CD053300A91DEC /* EFObjBaseEnemyFishNode.swift in Sources */,
 				89F995F619CD041400A91DEC /* GameViewController.swift in Sources */,
 				8999F18219DA3D61009B72CF /* OzgSKButtonNode.swift in Sources */,
 				89F9961C19CD051700A91DEC /* EFObjBaseFishNode.swift in Sources */,

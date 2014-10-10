@@ -2,6 +2,6 @@
 import Foundation
 import SpriteKit
 
-class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
+class EFObjEnemyFishNode: EFObjBaseFishNode {
     
 }
