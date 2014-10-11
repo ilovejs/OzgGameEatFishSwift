@@ -2,7 +2,7 @@
 import Foundation
 import SpriteKit
 
-class EFObjJellyfishNode: EFObjBaseFishNode {
+class EFObjJellyfishNode: EFObjBaseEnemyFishNode {
     
     override init() {
         super.init()
@@ -21,10 +21,6 @@ class EFObjJellyfishNode: EFObjBaseFishNode {
         self.addChild(center)
         
         self.playAnim()
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     deinit {

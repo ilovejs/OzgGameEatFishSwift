@@ -133,6 +133,8 @@ class EFObjBaseFishNode: SKNode {
                 frames.append((OzgSKTextureManager.getInstance!.get(texName))!)
             }
             
+            //这个动画执行了之后，第二帧以后会跑到最上面，不知道是什么问题
+            
             var anim: SKAction = SKAction.repeatActionForever(SKAction.animateWithTextures(frames, timePerFrame: 0.1))
                         
             fish?.removeAllActions()

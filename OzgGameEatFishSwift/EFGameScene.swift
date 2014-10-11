@@ -154,8 +154,43 @@ class EFGameScene: EFBaseScene {
                 enemyFishNode.removeFromParent()
                 
             })
+        }
+        
+        //fish1
+        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish1 {
+            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish1))
             
         }
+        
+        //fish2
+//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish2 {
+//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish2))
+//            
+//        }
+//        
+//        //fish3
+//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish3 {
+//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish3))
+//            
+//        }
+//        
+//        //fish4
+//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish4 {
+//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish4))
+//            
+//        }
+//        
+//        //fish5
+//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish5 {
+//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish5))
+//            
+//        }
+//        
+//        //fish6
+//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish6 {
+//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish6))
+//            
+//        }
         
     }
     
@@ -208,6 +243,58 @@ class EFGameScene: EFBaseScene {
         if btn.name! == "btn_pause" {
             
         }
+    }
+    
+    func enemyFishEmergence(enemyFishNode: EFObjBaseEnemyFishNode) {
+        var startPoint: CGPoint?
+        var endPoint: CGPoint?
+        
+        var fishNode = self.childNodeWithName("fish_node")
+        
+        //0.5为左边右边的机率各为50%
+        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= 0.5 {
+            //左边出现
+            startPoint = self.enemyFishRandomLeftPoint(enemyFishNode)
+            endPoint = self.enemyFishRandomRightPoint(enemyFishNode)
+            enemyFishNode.orientationRight() //左边出现需要面向右边
+        }
+        else {
+            //右边出现
+            startPoint = self.enemyFishRandomRightPoint(enemyFishNode)
+            endPoint = self.enemyFishRandomLeftPoint(enemyFishNode)
+            enemyFishNode.orientationLeft() //右边出现需要面向左边
+        }
+        
+        enemyFishNode.position = startPoint!
+        fishNode?.addChild(enemyFishNode)
+        
+        var moveTime: Float = 20.0 - 10.0
+        moveTime = 10.0 + (moveTime * OzgSwiftUtility.randomRange(0, maxValue: 1))
+        
+        enemyFishNode.m_isMoving = true
+        
+        enemyFishNode.runAction(SKAction.moveTo(endPoint!, duration: NSTimeInterval(moveTime)), completion: {
+            enemyFishNode.removeFromParent()
+        })
+        
+    }
+    
+    func enemyFishRandomLeftPoint(enemyFishNode: EFObjBaseEnemyFishNode) -> CGPoint {
+        
+        var x = -enemyFishNode.fishSize().width / 2
+        var minY = Float(enemyFishNode.centerPointRect().size.height / 2)
+        var maxY = Float(self.size.height) - minY
+        
+        return CGPointMake(x, CGFloat(OzgSwiftUtility.randomRange(minY, maxValue: maxY)))
+    }
+    
+    func enemyFishRandomRightPoint(enemyFishNode: EFObjBaseEnemyFishNode) -> CGPoint {
+        
+        var x = self.size.width + (enemyFishNode.fishSize().width / 2)
+        var minY = Float(enemyFishNode.centerPointRect().size.height / 2)
+        var maxY = Float(self.size.height) - minY
+        
+        return CGPointMake(x, CGFloat(OzgSwiftUtility.randomRange(minY, maxValue: maxY)))
     }
     
 }

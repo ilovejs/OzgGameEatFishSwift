@@ -2,7 +2,7 @@
 import Foundation
 import SpriteKit
 
-class EFObjEnemyFishNode: EFObjBaseFishNode {
+class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
 
     enum EnemyFishType {
         case Fish1
