@@ -49,18 +49,25 @@ class EFGameScene: EFBaseScene {
         fishNode.position = CGPoint.zeroPoint
         fishNode.name = "fish_node"
         self.addChild(fishNode)
-        
+                
         //test anim
-        var player = EFObjPlayerNode()
-        player.position = CGPointMake(self.size.width / 2, self.size.height / 2)
-        fishNode.addChild(player)
+//        var player = EFObjPlayerNode()
+//        player.position = CGPointMake(self.size.width / 2, self.size.height / 2)
+//        fishNode.addChild(player)
+//        player.invincible()
+//        
+//        player.orientationRight() //test
+//        player.cump(EFObjEnemyFishNode.EnemyFishType.Fish1) //test
+//        
+//        var jellyFish = EFObjJellyfishNode()
+//        jellyFish.position = CGPointMake(self.size.width / 2, 450)
+//        fishNode.addChild(jellyFish)
+//        
+//        var enemyFish1 = EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish2)
+//        enemyFish1.position = CGPointMake(200, 200)
+//        fishNode.addChild(enemyFish1)
         
-        player.orientationRight() //test
-        player.cump() //test
-        
-        var jellyFish = EFObjJellyfishNode()
-        jellyFish.position = CGPointMake(self.size.width / 2, 450)
-        fishNode.addChild(jellyFish)
+        //test anim end
         
         var stageNumLab = SKLabelNode(text: NSLocalizedString("GameScene_LabStage", tableName: nil, comment: "Stage").stringByAppendingFormat("%i", self.m_stageNum!))
         stageNumLab.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Center
@@ -127,6 +134,28 @@ class EFGameScene: EFBaseScene {
             return
         }
         
+        //水母
+        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyJellyfish {
+            
+            var enemyFishNode = EFObjJellyfishNode()
+            var minVal = enemyFishNode.fishSize().width / 2
+            var maxVal = self.size.width - (enemyFishNode.fishSize().width / 2)
+            
+            var srcX:Float = Float(maxVal - minVal)
+            srcX = Float(minVal) + (srcX * OzgSwiftUtility.randomRange(0, maxValue: 1))
+            
+            enemyFishNode.position = CGPointMake(CGFloat(srcX), -enemyFishNode.fishSize().width / 2)
+            fishNode?.addChild(enemyFishNode)
+            
+            var moveTime: Float = 15.0 - 10.0
+            moveTime = 10.0 + (moveTime * OzgSwiftUtility.randomRange(0, maxValue: 1))
+            enemyFishNode.runAction(SKAction.sequence([ SKAction.moveTo(CGPointMake(CGFloat(srcX), self.size.height + (enemyFishNode.fishSize().height / 2)), duration: NSTimeInterval(moveTime)) ]), completion: {
+                
+                enemyFishNode.removeFromParent()
+                
+            })
+            
+        }
         
     }
     

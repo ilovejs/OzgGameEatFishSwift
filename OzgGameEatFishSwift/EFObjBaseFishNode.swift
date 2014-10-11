@@ -42,6 +42,11 @@ class EFObjBaseFishNode: SKNode {
         return CGRectMake((point?.x)!, (point?.y)!, (center?.size.width)!, (center?.size.height)!)
     }
     
+    func fishSize() -> CGSize {
+        var fish = self.childNodeWithName("fish") as SKSpriteNode?
+        return (fish?.size)!
+    }
+    
     //朝向左边
     func orientationLeft() {
         self.m_orientation = Orientation.Left
