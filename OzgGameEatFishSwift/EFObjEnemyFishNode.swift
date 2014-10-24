@@ -45,38 +45,38 @@ class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
         var fish = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(fishTex))
         fish.position = CGPoint.zeroPoint
         fish.name = "fish"
-        self.addChild(fish)
         
-        var center = SKSpriteNode()
-        center.name = "center"
         switch self.m_type! {
         case EnemyFishType.Fish2:
-            center.position = CGPointMake(fish.size.width / 2, 12)
-            center.size = CGSizeMake(16, 16)
+            fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(16, 16))
             
         case EnemyFishType.Fish3:
-            center.position = CGPointMake(fish.size.width / 2, 30)
-            center.size = CGSizeMake(24, 24)
+            fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(28, 28))
             
         case EnemyFishType.Fish4:
-            center.position = CGPointMake(fish.size.width / 2, 50)
-            center.size = CGSizeMake(40, 40)
+            fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(42, 42))
             
         case EnemyFishType.Fish5:
-            center.position = CGPointMake(fish.size.width / 2, 105)
-            center.size = CGSizeMake(128, 96)
+            fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(148, 108))
             
         case EnemyFishType.Fish6:
-            center.position = CGPointMake(fish.size.width / 2, 105)
-            center.size = CGSizeMake(128, 96)
+            fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(148, 108))
             
         default:
-            center.position = CGPointMake(fish.size.width / 2, 12)
-            center.size = CGSizeMake(16, 16)
+            fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(16, 16))
             
         }
-        self.addChild(center)
         
+        fish.physicsBody?.dynamic = true
+        fish.physicsBody?.allowsRotation = false
+        fish.physicsBody?.friction = 0
+        fish.physicsBody?.restitution = 1
+        fish.physicsBody?.linearDamping = 0
+        fish.physicsBody?.collisionBitMask = 0
+        fish.physicsBody?.contactTestBitMask = 3
+        fish.physicsBody?.categoryBitMask = 1
+        self.addChild(fish)
+                
         self.playAnim()
     }
     

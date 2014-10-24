@@ -13,12 +13,16 @@ class EFObjJellyfishNode: EFObjBaseEnemyFishNode {
         var fish = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(fishTex))
         fish.position = CGPoint.zeroPoint
         fish.name = "fish"
+        fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(67, 94))
+        fish.physicsBody?.dynamic = true
+        fish.physicsBody?.allowsRotation = false
+        fish.physicsBody?.friction = 0
+        fish.physicsBody?.restitution = 1
+        fish.physicsBody?.linearDamping = 0
+        fish.physicsBody?.collisionBitMask = 0
+        fish.physicsBody?.contactTestBitMask = 2
+        fish.physicsBody?.categoryBitMask = 1        
         self.addChild(fish)
-        
-        var center = SKSpriteNode()
-        center.size = CGSizeMake(56, 64)
-        center.name = "center"
-        self.addChild(center)
         
         self.playAnim()
     }

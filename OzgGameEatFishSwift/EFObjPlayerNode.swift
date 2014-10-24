@@ -22,20 +22,31 @@ class EFObjPlayerNode: EFObjBaseFishNode {
         self.m_isInvincible = false
         
         var fishTex = NSBundle.mainBundle().pathForResource((self.m_animSpriteList?[0].stringByDeletingPathExtension)!, ofType: self.m_animSpriteList?[0].pathExtension)!
+        
         var fish = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(fishTex))
         fish.position = CGPoint.zeroPoint
         fish.name = "fish"
+        fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(16, 16))
+        fish.physicsBody?.dynamic = true
+        fish.physicsBody?.allowsRotation = false
+        fish.physicsBody?.friction = 0
+        fish.physicsBody?.restitution = 1
+        fish.physicsBody?.linearDamping = 0
+        fish.physicsBody?.collisionBitMask = 0
+        fish.physicsBody?.contactTestBitMask = 1
+        fish.physicsBody?.categoryBitMask = 1        
         self.addChild(fish)
         
-        var center = SKSpriteNode()
-        center.size = CGSizeMake(16, 16)
-        center.name = "center"
-        self.addChild(center)
+//        var testPhysics = SKShapeNode(rect: CGRectMake(0, 0, 16, 16))
+//        testPhysics.fillColor = UIColor.blackColor()
+//        testPhysics.zPosition = 5
+//        testPhysics.position = CGPointMake(0, 0)
+//        self.addChild(testPhysics)
         
         self.changeStatus(self.m_status!)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -48,7 +59,6 @@ class EFObjPlayerNode: EFObjBaseFishNode {
         self.m_status = status
         
         var water = self.childNodeWithName("water") as SKSpriteNode?
-        var center = self.childNodeWithName("center") as SKSpriteNode?
         
         switch self.m_status! {
         
@@ -57,24 +67,15 @@ class EFObjPlayerNode: EFObjBaseFishNode {
             
             water?.setScale(10.0)
             
-            center?.position = CGPointMake(56, 40)
-            center?.size = CGSizeMake(56, 56)
-            
         case Status.Big:
             self.m_animSpriteList = EFObjFishData.playerBFish()
             
             water?.setScale(15.0)
             
-            center?.position = CGPointMake(120, 96)
-            center?.size = CGSizeMake(96, 96)
-            
         default:
             self.m_animSpriteList = EFObjFishData.playerFish()
             
             water?.setScale(5.0)
-            
-            center?.position = CGPointMake(28, 21)
-            center?.size = CGSizeMake(16, 16)
             
         }
         

@@ -19,29 +19,17 @@ class EFObjBaseFishNode: SKNode {
         
         self.m_isMoving = true
         self.m_orientation = Orientation.Left
-        
     }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     deinit {
         println("EFObjBaseFishNode释放")
         
     }
-    
-    func centerPointRect() -> CGRect {
-        var center = self.childNodeWithName("center") as SKSpriteNode?
-        if center == nil {
-            return CGRect.zeroRect
-        }
-        
-        var point = center?.position
-        point = self.convertPoint(point!, toNode: (self.parent?.parent)!)
-        return CGRectMake((point?.x)!, (point?.y)!, (center?.size.width)!, (center?.size.height)!)
-    }
-    
+
     func fishSize() -> CGSize {
         var fish = self.childNodeWithName("fish") as SKSpriteNode?
         return (fish?.size)!

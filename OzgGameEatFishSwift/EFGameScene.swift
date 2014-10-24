@@ -2,7 +2,7 @@
 import Foundation
 import SpriteKit
 
-class EFGameScene: EFBaseScene {
+class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
     
     var m_playerLife: Int?
     var m_stageNum: Int? //关卡
@@ -14,10 +14,15 @@ class EFGameScene: EFBaseScene {
     var m_eatFishTotalType3: Int? //吃了Type3的鱼的总数
     var m_eatFishTotalType4: Int? //吃了Type4的鱼的总数
     
+    var m_isPlayerInit: Bool? //player掉下来时为true，其余时间全部为false
+    
     var m_bg: String?
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
+        
+        self.physicsWorld.gravity = CGVectorMake(0, 0)
+        self.physicsWorld.contactDelegate = self
         
         self.m_playerLife = GameConfig.players
         self.m_stageNum = 1
@@ -51,18 +56,12 @@ class EFGameScene: EFBaseScene {
         self.addChild(fishNode)
                 
         //test anim
-//        var player = EFObjPlayerNode()
-//        player.position = CGPointMake(self.size.width / 2, self.size.height / 2)
-//        fishNode.addChild(player)
-//        player.invincible()
-//        
-//        player.orientationRight() //test
-//        player.cump(EFObjEnemyFishNode.EnemyFishType.Fish1) //test
-//        
+        
 //        var jellyFish = EFObjJellyfishNode()
 //        jellyFish.position = CGPointMake(self.size.width / 2, 450)
+//        jellyFish.name = "jellyFish"
 //        fishNode.addChild(jellyFish)
-//        
+
 //        var enemyFish1 = EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish2)
 //        enemyFish1.position = CGPointMake(200, 200)
 //        fishNode.addChild(enemyFish1)
@@ -121,6 +120,18 @@ class EFGameScene: EFBaseScene {
         fishLifeLab.fontName = GameConfig.globalFontName01
         self.addChild(fishLifeLab)
         
+        //player
+        self.m_isPlayerInit = true
+        var player = EFObjPlayerNode()
+        player.name = "player"
+        player.position = CGPointMake(self.size.width / 2, 800)
+        fishNode.addChild(player)
+        player.invincible()
+        
+        self.userInteractionEnabled = false
+        
+        self.gameStart()
+        
     }
     
     override func willMoveFromView(view: SKView) {
@@ -128,6 +139,10 @@ class EFGameScene: EFBaseScene {
     }
     
     override func update(currentTime: NSTimeInterval) {
+        
+        if self.m_isPlayerInit! == true {
+            return
+        }
         
         var fishNode = self.childNodeWithName("fish_node")
         if fishNode == nil {
@@ -155,7 +170,7 @@ class EFGameScene: EFBaseScene {
                 
             })
         }
-        
+
         //fish1
         if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish1 {
             self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish1))
@@ -163,34 +178,34 @@ class EFGameScene: EFBaseScene {
         }
         
         //fish2
-//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish2 {
-//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish2))
-//            
-//        }
-//        
-//        //fish3
-//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish3 {
-//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish3))
-//            
-//        }
-//        
-//        //fish4
-//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish4 {
-//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish4))
-//            
-//        }
-//        
-//        //fish5
-//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish5 {
-//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish5))
-//            
-//        }
-//        
-//        //fish6
-//        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish6 {
-//            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish6))
-//            
-//        }
+        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish2 {
+            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish2))
+            
+        }
+
+        //fish3
+        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish3 {
+            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish3))
+            
+        }
+        
+        //fish4
+        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish4 {
+            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish4))
+            
+        }
+        
+        //fish5
+        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish5 {
+            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish5))
+            
+        }
+        
+        //fish6
+        if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish6 {
+            self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish6))
+            
+        }
         
     }
     
@@ -200,11 +215,59 @@ class EFGameScene: EFBaseScene {
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         
-        //var fishNode = self.childNodeWithName("fish_node")
+        var fishNode = self.childNodeWithName("fish_node")
+        var player = fishNode?.childNodeWithName("player") as EFObjPlayerNode?
+//        if player != nil && ((player as EFObjPlayerNode?)?.m_isMoving)! == true {
+        if player != nil {
+            var touch: UITouch? = touches.anyObject() as UITouch?
+            
+            var beginPoint =  touch?.locationInNode(self)
+            var endPoint = touch?.previousLocationInNode(self)
+            var offset = CGPointMake((beginPoint?.x)! - (endPoint?.x)!, (beginPoint?.y)! - (endPoint?.y)!)
+            var toPoint = CGPointMake((player?.position.x)! + offset.x, (player?.position.y)! + offset.y)
+            
+            player?.position = toPoint
+            
+            var toX = (player?.position.x)!
+            var toY = (player?.position.y)!
+            
+            var rect = CGRectMake((player?.position.x)!, (player?.position.y)!, (player?.fishSize().width)!, (player?.fishSize().height)!)
+            var moveRect = CGRectMake(rect.size.width / 2, rect.size.height / 2, self.frame.width - (rect.size.width / 2), self.frame.height - (rect.size.height / 2))
+         
+            //如果toPoint的x存在moveRect的宽度范围里面则x为可移动，y的情况一样
+            if toPoint.x >= moveRect.origin.x && toPoint.x <= moveRect.size.width {
+                toX = toPoint.x
+            }
+            if toPoint.y >= moveRect.origin.y && toPoint.y <= moveRect.size.height {
+                toY = toPoint.y
+            }
+            player?.position = CGPointMake(toX, toY)
+            
+            if offset.x > 0 {
+                player?.orientationRight() //向右移动则转向右边
+            }
+            else if (offset.x < 0) {
+                player?.orientationLeft() //向左移动则转向左边
+            }
+            
+        }
         
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        
+    }
+    
+    func gameStart() {
+        self.playEffectAudio("audios_fishstart.mp3")
+        
+        var fishNode = self.childNodeWithName("fish_node")
+        var player = fishNode?.childNodeWithName("player") as EFObjPlayerNode?
+        player?.runAction(SKAction.moveBy(CGVectorMake(0, -400), duration: 1.0), completion: {
+            self.userInteractionEnabled = true
+            self.m_isPlayerInit = false
+            
+        })
         
     }
     
@@ -282,19 +345,26 @@ class EFGameScene: EFBaseScene {
     func enemyFishRandomLeftPoint(enemyFishNode: EFObjBaseEnemyFishNode) -> CGPoint {
         
         var x = -enemyFishNode.fishSize().width / 2
-        var minY = Float(enemyFishNode.centerPointRect().size.height / 2)
+        var minY = Float(enemyFishNode.fishSize().height / 2)
         var maxY = Float(self.size.height) - minY
         
         return CGPointMake(x, CGFloat(OzgSwiftUtility.randomRange(minY, maxValue: maxY)))
+    
     }
     
     func enemyFishRandomRightPoint(enemyFishNode: EFObjBaseEnemyFishNode) -> CGPoint {
         
         var x = self.size.width + (enemyFishNode.fishSize().width / 2)
-        var minY = Float(enemyFishNode.centerPointRect().size.height / 2)
+        var minY = Float(enemyFishNode.fishSize().height / 2)
         var maxY = Float(self.size.height) - minY
         
         return CGPointMake(x, CGFloat(OzgSwiftUtility.randomRange(minY, maxValue: maxY)))
+        
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+//        println("碰撞的回调")
+        
     }
     
 }

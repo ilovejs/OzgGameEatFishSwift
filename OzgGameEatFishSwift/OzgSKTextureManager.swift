@@ -22,11 +22,11 @@ class OzgSKTextureManager: NSObject {
     func add(texName: String) {
         if self.m_textureObjects?[texName] != nil {
             //println("修改了Texture，Key为" + texName)
-            self.m_textureObjects?.updateValue(SKTexture(image: UIImage(contentsOfFile: texName)), forKey: texName)
+            self.m_textureObjects?.updateValue(SKTexture(image: UIImage(contentsOfFile: texName)!), forKey: texName)
         }
         else {
             //println("增加了Texture，Key为" + texName)
-            self.m_textureObjects?[texName] = SKTexture(image: UIImage(contentsOfFile: texName))
+            self.m_textureObjects?[texName] = SKTexture(image: UIImage(contentsOfFile: texName)!)
         }
     }
     

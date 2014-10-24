@@ -42,9 +42,9 @@
 		89104A1B19CD42CE00CA223E /* EFGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89104A1A19CD42CE00CA223E /* EFGameScene.sks */; };
 		892E07A119E4000600E4EA68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892E07A019E4000600E4EA68 /* Images.xcassets */; };
 		8974EA4019D970C00079CED6 /* blister.png in Resources */ = {isa = PBXBuildFile; fileRef = 8974EA3F19D970C00079CED6 /* blister.png */; };
+		8981D72E19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8981D72D19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift */; };
 		8999F18019DA3D41009B72CF /* OzgSwiftUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8999F17F19DA3D41009B72CF /* OzgSwiftUtility.swift */; };
 		8999F18219DA3D61009B72CF /* OzgSKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8999F18119DA3D61009B72CF /* OzgSKButtonNode.swift */; };
-		89BA856619E28F53007E41AA /* test-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 89BA856519E28F53007E41AA /* test-32.png */; };
 		89CCFE6619DAB73D00332828 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89CCFE6819DAB73D00332828 /* InfoPlist.strings */; };
 		89CCFE6919DAB74300332828 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89CCFE6B19DAB74300332828 /* Localizable.strings */; };
 		89EF312319E278A300CAFF3A /* OzgSKTextureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF312219E278A300CAFF3A /* OzgSKTextureManager.swift */; };
@@ -109,9 +109,9 @@
 		89104A1A19CD42CE00CA223E /* EFGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EFGameScene.sks; sourceTree = "<group>"; };
 		892E07A019E4000600E4EA68 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8974EA3F19D970C00079CED6 /* blister.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blister.png; path = Resources/blister.png; sourceTree = "<group>"; };
+		8981D72D19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjBaseEnemyFishNode.swift; sourceTree = "<group>"; };
 		8999F17F19DA3D41009B72CF /* OzgSwiftUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OzgSwiftUtility.swift; sourceTree = "<group>"; };
 		8999F18119DA3D61009B72CF /* OzgSKButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OzgSKButtonNode.swift; sourceTree = "<group>"; };
-		89BA856519E28F53007E41AA /* test-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "test-32.png"; path = "Resources/test-32.png"; sourceTree = "<group>"; };
 		89CCFE6719DAB73D00332828 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89CCFE6A19DAB74300332828 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		89EF312219E278A300CAFF3A /* OzgSKTextureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OzgSKTextureManager.swift; sourceTree = "<group>"; };
@@ -155,7 +155,6 @@
 		891049D719CD2FBD00CA223E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				89BA856519E28F53007E41AA /* test-32.png */,
 				89CCFE6119DAB6E700332828 /* strings */,
 				8974EA3F19D970C00079CED6 /* blister.png */,
 				8905AB7A19D906F70006CF15 /* cump */,
@@ -238,6 +237,7 @@
 				89F9961719CD04B100A91DEC /* EFStartScene.swift */,
 				89F9961D19CD052400A91DEC /* EFObjFishData.swift */,
 				89F9961B19CD051700A91DEC /* EFObjBaseFishNode.swift */,
+				8981D72D19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift */,
 				89F9962319CD055800A91DEC /* EFObjPlayerNode.swift */,
 				89F9962119CD054700A91DEC /* EFObjJellyfishNode.swift */,
 				89104A1619CD33C200CA223E /* EFObjEnemyFishNode.swift */,
@@ -361,7 +361,6 @@
 				89104A0519CD300000CA223E /* bg3.png in Resources */,
 				89104A0819CD300000CA223E /* btn2_dw.png in Resources */,
 				89104A0E19CD300000CA223E /* dialog_btn_yes_1.png in Resources */,
-				89BA856619E28F53007E41AA /* test-32.png in Resources */,
 				89104A1919CD352500CA223E /* EFStartScene.sks in Resources */,
 				8905AB7E19D906F70006CF15 /* Fishall in Resources */,
 				8905AB7F19D906F70006CF15 /* Fishtales in Resources */,
@@ -418,6 +417,7 @@
 				89F995F619CD041400A91DEC /* GameViewController.swift in Sources */,
 				8999F18219DA3D61009B72CF /* OzgSKButtonNode.swift in Sources */,
 				89F9961C19CD051700A91DEC /* EFObjBaseFishNode.swift in Sources */,
+				8981D72E19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift in Sources */,
 				89F9961419CD047B00A91DEC /* EFBaseScene.swift in Sources */,
 				89EF312319E278A300CAFF3A /* OzgSKTextureManager.swift in Sources */,
 				89F995F019CD041400A91DEC /* AppDelegate.swift in Sources */,
