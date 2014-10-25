@@ -14,7 +14,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
     var m_eatFishTotalType3: Int? //吃了Type3的鱼的总数
     var m_eatFishTotalType4: Int? //吃了Type4的鱼的总数
     
-    var m_isPlayerInit: Bool? //player掉下来时为true，其余时间全部为false
+    var m_isPauseUpdate: Bool? //为true的时候跳过update方法
     
     var m_bg: String?
     
@@ -82,6 +82,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
         scoreLab.position = CGPointMake(750, 560)
         scoreLab.fontSize = 28
         scoreLab.fontName = GameConfig.globalFontName01
+        scoreLab.name = "scoreLab"
         self.addChild(scoreLab)
         
         var btnPause = OzgSKButtonNode(normalImg: "pause_up.png", downImg: "pause_dw.png", disableImg: "pause_dw.png", title: nil)
@@ -118,17 +119,18 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
         fishLifeLab.position = CGPointMake(90, 540)
         fishLifeLab.fontSize = 28
         fishLifeLab.fontName = GameConfig.globalFontName01
+        fishLifeLab.name = "fishLifeLab"
         self.addChild(fishLifeLab)
         
         //player
-        self.m_isPlayerInit = true
+        self.m_isPauseUpdate = true
         var player = EFObjPlayerNode()
         player.name = "player"
         player.position = CGPointMake(self.size.width / 2, 800)
         fishNode.addChild(player)
         player.invincible()
         
-        self.userInteractionEnabled = false
+        self.enabledTouchEvent(false)
         
         self.gameStart()
         
@@ -140,7 +142,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
     
     override func update(currentTime: NSTimeInterval) {
         
-        if self.m_isPlayerInit! == true {
+        if self.m_isPauseUpdate! == true {
             return
         }
         
@@ -264,9 +266,9 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
         var fishNode = self.childNodeWithName("fish_node")
         var player = fishNode?.childNodeWithName("player") as EFObjPlayerNode?
         player?.runAction(SKAction.moveBy(CGVectorMake(0, -400), duration: 1.0), completion: {
-            self.userInteractionEnabled = true
-            self.m_isPlayerInit = false
-            
+            self.enabledTouchEvent(true)
+            self.m_isPauseUpdate = false
+            player?.m_isMoving = true
         })
         
     }
@@ -363,8 +365,163 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
-//        println("碰撞的回调")
+//        println("碰撞的回调" + contact.bodyA.contactTestBitMask.description + " " + contact.bodyB.contactTestBitMask.description)
         
+        if contact.bodyA.contactTestBitMask == 1 {
+            self.collisionPlayerToAny(contact.bodyA.node?.parent! as EFObjPlayerNode, target: contact.bodyB.node?.parent! as EFObjBaseEnemyFishNode)
+        }
+        else if contact.bodyB.contactTestBitMask == 1 {
+            self.collisionPlayerToAny(contact.bodyB.node?.parent! as EFObjPlayerNode, target: contact.bodyA.node?.parent! as EFObjBaseEnemyFishNode)
+        }
+        
+    }
+    
+    func collisionPlayerToAny(player: EFObjPlayerNode, target: EFObjBaseEnemyFishNode) {
+        
+        var fishNode = self.childNodeWithName("fish_node")
+        
+        if target.isKindOfClass(EFObjEnemyFishNode) {
+            
+            var doEat = false
+            if player.m_isMoving == true {
+                
+                switch player.m_status! {
+                    
+                case EFObjPlayerNode.Status.Normal:
+                    //中的状态
+                    if (target as EFObjEnemyFishNode).m_type! == EFObjEnemyFishNode.EnemyFishType.Fish1 ||
+                        (target as EFObjEnemyFishNode).m_type! == EFObjEnemyFishNode.EnemyFishType.Fish2 ||
+                        (target as EFObjEnemyFishNode).m_type! == EFObjEnemyFishNode.EnemyFishType.Fish3 {
+                        doEat = true
+                    }
+                    
+                    
+                case EFObjPlayerNode.Status.Big:
+                    //大的状态
+                    if (target as EFObjEnemyFishNode).m_type! == EFObjEnemyFishNode.EnemyFishType.Fish1 ||
+                        (target as EFObjEnemyFishNode).m_type! == EFObjEnemyFishNode.EnemyFishType.Fish2 ||
+                        (target as EFObjEnemyFishNode).m_type! == EFObjEnemyFishNode.EnemyFishType.Fish3 ||
+                    (target as EFObjEnemyFishNode).m_type! == EFObjEnemyFishNode.EnemyFishType.Fish4 {
+                            doEat = true
+                    }
+                    
+                default:
+                    //小的状态
+                    if (target as EFObjEnemyFishNode).m_type! == EFObjEnemyFishNode.EnemyFishType.Fish1 ||
+                        (target as EFObjEnemyFishNode).m_type! == EFObjEnemyFishNode.EnemyFishType.Fish2 {
+                            doEat = true
+                    }
+                }
+                
+                if doEat == true {
+                    //吃掉比自己小的鱼
+                    var audioList = [ "audios_eatfish1.mp3", "audios_eatfish2.mp3" ]
+                    var audioIndex = Int(arc4random_uniform(UInt32(audioList.count)))
+                    self.playEffectAudio(audioList[audioIndex])
+                    
+                    player.cump((target as EFObjEnemyFishNode).m_type!)
+                    target.removeFromParent()
+                    
+                    //分数
+                    self.changeScore((target as EFObjEnemyFishNode).m_type!)
+                    
+                    //关卡进度条
+                    var cpProgress = CGFloat(self.m_eatFishTotal!) / CGFloat(GameConfig.stageClear)
+                    
+                    var progress = self.childNodeWithName("progress") as SKSpriteNode?
+                    progress?.xScale = cpProgress
+                    
+                    if cpProgress >= 1 {
+                        //过关
+                        self.m_isPauseUpdate = true
+                        self.playEffectAudio("audios_complete.mp3")
+                        
+                        self.enabledTouchEvent(false)
+                        fishNode?.removeAllChildren()
+                        
+                        //过关界面
+                        
+                    }
+                    
+                    //变大的判断
+                    if player.m_status == EFObjPlayerNode.Status.Normal && self.m_eatFish! >= GameConfig.playerStatusBig {
+                        self.playEffectAudio("audios_growth.mp3")
+                        player.changeStatus(EFObjPlayerNode.Status.Big)
+                    }
+                    else if player.m_status == EFObjPlayerNode.Status.Small && self.m_eatFish! >= GameConfig.playerStatusNormal {
+                        self.playEffectAudio("audios_growth.mp3")
+                        player.changeStatus(EFObjPlayerNode.Status.Normal)
+                    }
+                    
+                }
+                else {
+                
+                }
+                
+            }
+            
+        }
+        else if target.isKindOfClass(EFObjJellyfishNode) {
+            
+        }
+        
+    }
+    
+    func changeScore(type: EFObjEnemyFishNode.EnemyFishType) {
+        
+        switch type {
+        case EFObjEnemyFishNode.EnemyFishType.Fish2:
+            
+            self.m_score = self.m_score! + GameConfig.scoreFish2
+            self.m_eatFish = self.m_eatFish! + GameConfig.scoreFish2
+            self.m_eatFishTotal = self.m_eatFishTotal! + 1
+            self.m_eatFishTotalType1And2 = self.m_eatFishTotalType1And2! + 1
+            
+        case EFObjEnemyFishNode.EnemyFishType.Fish3:
+            
+            self.m_score = self.m_score! + GameConfig.scoreFish3
+            self.m_eatFish = self.m_eatFish! + GameConfig.scoreFish3
+            self.m_eatFishTotal = self.m_eatFishTotal! + 1
+            self.m_eatFishTotalType1And2 = self.m_eatFishTotalType3! + 1
+            
+        case EFObjEnemyFishNode.EnemyFishType.Fish4:
+            
+            self.m_score = self.m_score! + GameConfig.scoreFish4
+            self.m_eatFish = self.m_eatFish! + GameConfig.scoreFish4
+            self.m_eatFishTotal = self.m_eatFishTotal! + 1
+            self.m_eatFishTotalType1And2 = self.m_eatFishTotalType4! + 1
+            
+        default:
+            
+            self.m_score = self.m_score! + GameConfig.scoreFish1
+            self.m_eatFish = self.m_eatFish! + GameConfig.scoreFish1
+            self.m_eatFishTotal = self.m_eatFishTotal! + 1
+            self.m_eatFishTotalType1And2 = self.m_eatFishTotalType1And2! + 1
+            
+        }
+        
+        if self.m_score! > GameConfig.maxScore {
+            self.m_score = GameConfig.maxScore
+        }
+        
+        if self.m_eatFish! > GameConfig.maxScore {
+            self.m_eatFish = GameConfig.maxScore
+        }
+        
+        if self.m_eatFishTotal! > GameConfig.maxScore {
+            self.m_eatFishTotal = GameConfig.maxScore
+        }
+        
+        var scoreLab = self.childNodeWithName("scoreLab") as SKLabelNode?
+        scoreLab?.text = NSLocalizedString("GameScene_LabScore", tableName: nil, comment: "Score").stringByAppendingFormat("%i", self.m_score!)
+        
+    }
+    
+    func enabledTouchEvent(val: Bool) {
+        self.userInteractionEnabled = val
+        
+        var btnPause = self.childNodeWithName("btn_pause")
+        btnPause?.userInteractionEnabled = val
     }
     
 }

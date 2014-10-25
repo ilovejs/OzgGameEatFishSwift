@@ -35,6 +35,43 @@ class GameConfig {
         return 0.00125
     }
     
+    //吃了一条鱼所加的分数
+    class var scoreFish1: Int {
+        return 1
+    }
+    class var scoreFish2: Int {
+        return 1
+    }
+    class var scoreFish3: Int {
+        return 2
+    }
+    class var scoreFish4: Int {
+        return 3
+    }
+    
+    //最高分数
+    class var maxScore: Int {
+        return 99999
+    }
+    
+    //最高关卡
+    class var maxStage: Int {
+        return 99
+    }
+    
+    //吃够多少条鱼过一关
+    class var stageClear: Int {
+        return 500 //小鱼+1，中鱼+2，大鱼+3
+    }
+    
+    //升级到中等或大的所需分数
+    class var playerStatusNormal: Int {
+        return 145 //这个值必须为stageClear的29%
+    }
+    class var playerStatusBig: Int {
+        return 305 //这个值必须为stageClear的61%
+    }
+    
     //过场时间
     class var transitionTime: NSTimeInterval {
         
@@ -52,21 +89,7 @@ class GameConfig {
         
         return 30.0
     }
-    
-    //吃了一条鱼所加的分数
-    class var scoreFish1: Int {
-        return 1
-    }
-    class var scoreFish2: Int {
-        return 1
-    }
-    class var scoreFish3: Int {
-        return 2
-    }
-    class var scoreFish4: Int {
-        return 3
-    }
-    
+        
     //字体
     class var globalFontName01: String {
         
