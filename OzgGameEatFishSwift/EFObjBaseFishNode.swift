@@ -131,4 +131,10 @@ class EFObjBaseFishNode: SKNode {
         }
     }
     
+    override func removeFromParent() {
+        self.removeAllActions()
+        self.removeAllChildren()
+        super.removeFromParent()
+    }
+    
 }

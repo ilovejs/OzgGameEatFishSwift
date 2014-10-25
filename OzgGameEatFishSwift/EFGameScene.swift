@@ -437,9 +437,69 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
                         self.playEffectAudio("audios_complete.mp3")
                         
                         self.enabledTouchEvent(false)
-                        fishNode?.removeAllChildren()
+                        
+                        //直接removeAllChildren会内存泄露
+                        while fishNode?.children.last != nil {
+                            (fishNode?.children.last as EFObjBaseFishNode).removeFromParent()
+                        }
                         
                         //过关界面
+                        var clearNode = SKNode()
+                        clearNode.position = CGPoint.zeroPoint
+                        clearNode.name = "clearNode"
+                        self.addChild(clearNode)
+                        
+                        var clearBgTex = NSBundle.mainBundle().pathForResource("Fishtales/completebg", ofType: "png")!
+                        var clearBg = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(clearBgTex))
+                        clearBg.position = CGPointMake(self.size.width / 2, self.size.height / 2)
+                        clearNode.addChild(clearBg)
+                        
+                        var fishNumTex = NSBundle.mainBundle().pathForResource("Fishtales/fishnum", ofType: "png")!
+                        var fishNum = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(fishNumTex))
+                        fishNum.position = CGPointMake(self.size.width / 2, self.size.height / 2)
+                        clearNode.addChild(fishNum)
+                        
+                        var title = SKLabelNode(text: NSLocalizedString("GameScene_GameClearLab1", tableName: nil, comment: "Title"))
+                        title.position = CGPointMake(self.size.width / 2, 480)
+                        title.fontName = GameConfig.globalFontName01
+                        title.fontSize = 50
+                        clearNode.addChild(title)
+                        
+                        var gameClearLab1 = SKLabelNode(text: String((self.m_eatFishTotalType1And2?)!))
+                        gameClearLab1.fontName = GameConfig.globalFontName01
+                        gameClearLab1.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Center
+                        gameClearLab1.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+                        gameClearLab1.position = CGPointMake(600, 392)
+                        gameClearLab1.fontSize = 30
+                        clearNode.addChild(gameClearLab1)
+                        
+                        var gameClearLab2 = SKLabelNode(text: String((self.m_eatFishTotalType3?)!))
+                        gameClearLab2.fontName = GameConfig.globalFontName01
+                        gameClearLab2.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Center
+                        gameClearLab2.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+                        gameClearLab2.position = CGPointMake(600, 317)
+                        gameClearLab2.fontSize = 30
+                        clearNode.addChild(gameClearLab2)
+                        
+                        var gameClearLab3 = SKLabelNode(text: String((self.m_eatFishTotalType4?)!))
+                        gameClearLab3.fontName = GameConfig.globalFontName01
+                        gameClearLab3.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Center
+                        gameClearLab3.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+                        gameClearLab3.position = CGPointMake(600, 242)
+                        gameClearLab3.fontSize = 30
+                        clearNode.addChild(gameClearLab3)
+                        
+                        var btnExit = OzgSKButtonNode(normalImg: "btn1_up.png", downImg: "btn1_dw.png", disableImg: "btn1_dw.png", title: NSLocalizedString("GameScene_GameClearBtnQuit", tableName: nil, comment: "Quit"))
+                        btnExit.position = CGPointMake(280, 120)
+                        btnExit.name = "btn_exit"
+                        btnExit.setTouchedCallBack(self.onButton)
+                        clearNode.addChild(btnExit)
+                        
+                        var btnNext = OzgSKButtonNode(normalImg: "btn1_up.png", downImg: "btn1_dw.png", disableImg: "btn1_dw.png", title: NSLocalizedString("GameScene_GameClearBtnNext", tableName: nil, comment: "Next"))
+                        btnNext.position = CGPointMake(self.size.width - 280, 120)
+                        btnNext.name = "btn_next"
+                        btnNext.setTouchedCallBack(self.onButton)
+                        clearNode.addChild(btnNext)
                         
                     }
                     

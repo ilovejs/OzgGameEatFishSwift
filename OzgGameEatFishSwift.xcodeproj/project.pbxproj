@@ -28,11 +28,6 @@
 		89104A0819CD300000CA223E /* btn2_dw.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049ED19CD300000CA223E /* btn2_dw.png */; };
 		89104A0919CD300000CA223E /* btn2_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049EE19CD300000CA223E /* btn2_up.png */; };
 		89104A0A19CD300000CA223E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049EF19CD300000CA223E /* Default.png */; };
-		89104A0B19CD300000CA223E /* dialog_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049F019CD300000CA223E /* dialog_bg.png */; };
-		89104A0C19CD300000CA223E /* dialog_btn_no_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049F119CD300000CA223E /* dialog_btn_no_1.png */; };
-		89104A0D19CD300000CA223E /* dialog_btn_no_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049F219CD300000CA223E /* dialog_btn_no_2.png */; };
-		89104A0E19CD300000CA223E /* dialog_btn_yes_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049F319CD300000CA223E /* dialog_btn_yes_1.png */; };
-		89104A0F19CD300000CA223E /* dialog_btn_yes_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049F419CD300000CA223E /* dialog_btn_yes_2.png */; };
 		89104A1019CD300000CA223E /* pause_dw.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049F519CD300000CA223E /* pause_dw.png */; };
 		89104A1119CD300000CA223E /* pause_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049F619CD300000CA223E /* pause_up.png */; };
 		89104A1219CD300000CA223E /* progressk.png in Resources */ = {isa = PBXBuildFile; fileRef = 891049F719CD300000CA223E /* progressk.png */; };
@@ -95,11 +90,6 @@
 		891049ED19CD300000CA223E /* btn2_dw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn2_dw.png; path = Resources/btn2_dw.png; sourceTree = "<group>"; };
 		891049EE19CD300000CA223E /* btn2_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn2_up.png; path = Resources/btn2_up.png; sourceTree = "<group>"; };
 		891049EF19CD300000CA223E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
-		891049F019CD300000CA223E /* dialog_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dialog_bg.png; path = Resources/dialog_bg.png; sourceTree = "<group>"; };
-		891049F119CD300000CA223E /* dialog_btn_no_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dialog_btn_no_1.png; path = Resources/dialog_btn_no_1.png; sourceTree = "<group>"; };
-		891049F219CD300000CA223E /* dialog_btn_no_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dialog_btn_no_2.png; path = Resources/dialog_btn_no_2.png; sourceTree = "<group>"; };
-		891049F319CD300000CA223E /* dialog_btn_yes_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dialog_btn_yes_1.png; path = Resources/dialog_btn_yes_1.png; sourceTree = "<group>"; };
-		891049F419CD300000CA223E /* dialog_btn_yes_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dialog_btn_yes_2.png; path = Resources/dialog_btn_yes_2.png; sourceTree = "<group>"; };
 		891049F519CD300000CA223E /* pause_dw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause_dw.png; path = Resources/pause_dw.png; sourceTree = "<group>"; };
 		891049F619CD300000CA223E /* pause_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause_up.png; path = Resources/pause_up.png; sourceTree = "<group>"; };
 		891049F719CD300000CA223E /* progressk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progressk.png; path = Resources/progressk.png; sourceTree = "<group>"; };
@@ -178,11 +168,6 @@
 				891049ED19CD300000CA223E /* btn2_dw.png */,
 				891049EE19CD300000CA223E /* btn2_up.png */,
 				891049EF19CD300000CA223E /* Default.png */,
-				891049F019CD300000CA223E /* dialog_bg.png */,
-				891049F119CD300000CA223E /* dialog_btn_no_1.png */,
-				891049F219CD300000CA223E /* dialog_btn_no_2.png */,
-				891049F319CD300000CA223E /* dialog_btn_yes_1.png */,
-				891049F419CD300000CA223E /* dialog_btn_yes_2.png */,
 				891049F519CD300000CA223E /* pause_dw.png */,
 				891049F619CD300000CA223E /* pause_up.png */,
 				891049F719CD300000CA223E /* progressk.png */,
@@ -360,7 +345,6 @@
 				891049F919CD300000CA223E /* audios_bg.mp3 in Resources */,
 				89104A0519CD300000CA223E /* bg3.png in Resources */,
 				89104A0819CD300000CA223E /* btn2_dw.png in Resources */,
-				89104A0E19CD300000CA223E /* dialog_btn_yes_1.png in Resources */,
 				89104A1919CD352500CA223E /* EFStartScene.sks in Resources */,
 				8905AB7E19D906F70006CF15 /* Fishall in Resources */,
 				8905AB7F19D906F70006CF15 /* Fishtales in Resources */,
@@ -370,7 +354,6 @@
 				891049FB19CD300000CA223E /* audios_complete.mp3 in Resources */,
 				89104A1B19CD42CE00CA223E /* EFGameScene.sks in Resources */,
 				891049FA19CD300000CA223E /* audios_btn.wav in Resources */,
-				89104A0C19CD300000CA223E /* dialog_btn_no_1.png in Resources */,
 				89104A0419CD300000CA223E /* bg2.png in Resources */,
 				891049FD19CD300000CA223E /* audios_eatfish2.mp3 in Resources */,
 				89104A0219CD300000CA223E /* audios_playbyeat.mp3 in Resources */,
@@ -379,9 +362,7 @@
 				8974EA4019D970C00079CED6 /* blister.png in Resources */,
 				89CCFE6919DAB74300332828 /* Localizable.strings in Resources */,
 				89104A1019CD300000CA223E /* pause_dw.png in Resources */,
-				89104A0F19CD300000CA223E /* dialog_btn_yes_2.png in Resources */,
 				89104A0A19CD300000CA223E /* Default.png in Resources */,
-				89104A0B19CD300000CA223E /* dialog_bg.png in Resources */,
 				89CCFE6619DAB73D00332828 /* InfoPlist.strings in Resources */,
 				891049FF19CD300000CA223E /* audios_fishstart.mp3 in Resources */,
 				89104A0619CD300000CA223E /* btn1_dw.png in Resources */,
@@ -389,7 +370,6 @@
 				89104A1219CD300000CA223E /* progressk.png in Resources */,
 				89104A0019CD300000CA223E /* audios_growth.mp3 in Resources */,
 				89F995F919CD041400A91DEC /* Main.storyboard in Resources */,
-				89104A0D19CD300000CA223E /* dialog_btn_no_2.png in Resources */,
 				89104A0719CD300000CA223E /* btn1_up.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
