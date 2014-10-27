@@ -2,8 +2,6 @@
 "Alert_Title" = "Notice";
 
 "StartScene_AlertBtnCancel" = "Cancel";
-"StartScene_AlertBtnMonitor" = "Monitor";
-"StartScene_AlertBtnScan" = "Scan";
 "StartScene_BtnStart" = "Start";
 "StartScene_BtnHelp" = "Help";
 "StartScene_HelpTitle" = "Help:";

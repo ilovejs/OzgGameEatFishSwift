@@ -19,6 +19,10 @@ class OzgSKTextureManager: NSObject {
         
     }
     
+    func dump() {
+        println((self.m_textureObjects?.description)!)
+    }
+    
     func add(texName: String) {
         if self.m_textureObjects?[texName] != nil {
             //println("修改了Texture，Key为" + texName)

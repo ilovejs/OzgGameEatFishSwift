@@ -4,6 +4,10 @@ import SpriteKit
 
 class OzgSKButtonNode: SKSpriteNode {
     
+    var m_normal: String?
+    var m_down: String?
+    var m_disable: String?
+    
     var m_normalTex: SKTexture?
     var m_downTex: SKTexture?
     var m_disableTex: SKTexture?
@@ -12,9 +16,14 @@ class OzgSKButtonNode: SKSpriteNode {
     
     init(normalImg: String?, downImg: String?, disableImg: String?, title: String?) {
         
-        self.m_normalTex = OzgSKTextureManager.getInstance!.get(NSBundle.mainBundle().pathForResource(normalImg?.stringByDeletingPathExtension, ofType: normalImg?.pathExtension)!)
-        self.m_downTex = OzgSKTextureManager.getInstance!.get(NSBundle.mainBundle().pathForResource(downImg?.stringByDeletingPathExtension, ofType: downImg?.pathExtension)!)
-        self.m_disableTex = OzgSKTextureManager.getInstance!.get(NSBundle.mainBundle().pathForResource(disableImg?.stringByDeletingPathExtension, ofType: disableImg?.pathExtension)!)
+        self.m_normal = NSBundle.mainBundle().pathForResource(normalImg?.stringByDeletingPathExtension, ofType: normalImg?.pathExtension)
+        self.m_down = NSBundle.mainBundle().pathForResource(downImg?.stringByDeletingPathExtension, ofType: downImg?.pathExtension)
+        self.m_disable = NSBundle.mainBundle().pathForResource(disableImg?.stringByDeletingPathExtension, ofType: disableImg?.pathExtension)
+        
+        self.m_normalTex = OzgSKTextureManager.getInstance!.get(self.m_normal!)
+        self.m_downTex = OzgSKTextureManager.getInstance!.get(self.m_down!)
+        self.m_disableTex = OzgSKTextureManager.getInstance!.get(self.m_disable!)
+        
         self.m_enable = true
         
         super.init(texture: self.m_normalTex!, color: UIColor(white: 1, alpha: 0), size: self.m_normalTex!.size())
@@ -28,6 +37,14 @@ class OzgSKButtonNode: SKSpriteNode {
             titleLab.fontSize = 24
             self.addChild(titleLab)
         }
+    }
+    
+    deinit {
+        println("OzgSKButtonNode释放")
+        
+        OzgSKTextureManager.getInstance!.remove(self.m_normal!)
+        OzgSKTextureManager.getInstance!.remove(self.m_down!)
+        OzgSKTextureManager.getInstance!.remove(self.m_disable!)
     }
 
     required init(coder aDecoder: NSCoder) {

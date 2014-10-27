@@ -4,13 +4,23 @@ import SpriteKit
 
 class EFStartScene: EFBaseScene {
     
+    deinit {
+        let bgTexName = NSBundle.mainBundle().pathForResource("bg1", ofType: "png")!
+        let titleTexName = NSBundle.mainBundle().pathForResource("scene_start_title", ofType: "png")!
+        
+        OzgSKTextureManager.getInstance!.remove(bgTexName)
+        OzgSKTextureManager.getInstance!.remove(titleTexName)
+        
+        OzgSKTextureManager.getInstance!.dump()
+        
+        println("EFStartScene释放")
+    }
+    
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
         let bgTexName = NSBundle.mainBundle().pathForResource("bg1", ofType: "png")!
         let titleTexName = NSBundle.mainBundle().pathForResource("scene_start_title", ofType: "png")!
-        let btn1UpTexName = NSBundle.mainBundle().pathForResource("btn1_up", ofType: "png")!
-        let btn1DwTexName = NSBundle.mainBundle().pathForResource("btn1_dw", ofType: "png")!
                 
         var bg = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(bgTexName))
         bg.position = CGPointMake(self.size.width / 2, self.size.height / 2)
@@ -36,16 +46,13 @@ class EFStartScene: EFBaseScene {
     }
     
     override func willMoveFromView(view: SKView) {
+        println("EFStartScene::willMoveFromView")
         
-        let bgTexName = NSBundle.mainBundle().pathForResource("bg1", ofType: "png")!
-        let titleTexName = NSBundle.mainBundle().pathForResource("scene_start_title", ofType: "png")!
-        let btn1UpTexName = NSBundle.mainBundle().pathForResource("btn1_up", ofType: "png")!
-        let btn1DwTexName = NSBundle.mainBundle().pathForResource("btn1_dw", ofType: "png")!
-        
-        OzgSKTextureManager.getInstance!.remove(bgTexName)
-        OzgSKTextureManager.getInstance!.remove(titleTexName)
-        OzgSKTextureManager.getInstance!.remove(btn1UpTexName)
-        OzgSKTextureManager.getInstance!.remove(btn1DwTexName)
+        while self.children.last != nil {
+            
+            (self.children.last as SKNode).removeFromParent()
+            
+        }
         
     }
     
@@ -116,14 +123,10 @@ class EFStartScene: EFBaseScene {
         default:
             //进入游戏
             
-            if let scene = EFGameScene.unarchiveFromFile("EFGameScene") as EFGameScene? {
-                var t = SKTransition.fadeWithDuration(GameConfig.transitionTime)
-                
-                let skView = self.view
-                scene.scaleMode = SKSceneScaleMode.AspectFit
-                skView?.presentScene(scene, transition: t)
-            }
-            
+            let scene = EFGameScene(fileNamed: "EFGameScene")
+            var t = SKTransition.fadeWithDuration(GameConfig.transitionTime)
+            scene.scaleMode = SKSceneScaleMode.AspectFit
+            self.view?.presentScene(scene, transition: t)
         }
         
     }

@@ -2,7 +2,7 @@
 import Foundation
 import SpriteKit
 
-class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
+class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     var m_playerLife: Int?
     var m_stageNum: Int? //关卡
@@ -17,6 +17,26 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
     var m_isPauseUpdate: Bool? //为true的时候跳过update方法
     
     var m_bg: String?
+    
+    deinit {
+        
+        
+        
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("bg1", ofType: "png")!)
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("bg2", ofType: "png")!)
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("bg3", ofType: "png")!)
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/fishlife", ofType: "png")!)
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("blister", ofType: "png")!)
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/progress", ofType: "png")!)
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/water1", ofType: "png")!)
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("progressk", ofType: "png")!)
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/fishnum", ofType: "png")!)
+        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/completebg", ofType: "png")!)
+        
+        //OzgSKTextureManager.getInstance!.dump()
+        
+        println("EFGameScene释放")
+    }
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -137,6 +157,13 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
     }
     
     override func willMoveFromView(view: SKView) {
+        println("EFGameScene::willMoveFromView")
+        
+        while self.children.last != nil {
+            
+            (self.children.last as SKNode).removeFromParent()
+            
+        }
         
     }
     
@@ -306,8 +333,46 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
         var btn: OzgSKButtonNode = sender as OzgSKButtonNode
         
         if btn.name! == "btn_pause" {
+            //暂停游戏
+            self.playEffectAudio("audios_btn.wav")
+            self.scenePause()
             
         }
+        else if btn.name! == "btn_resume" {
+            //继续游戏
+            self.playEffectAudio("audios_btn.wav")
+            
+            
+        }
+        else if btn.name! == "btn_sound" {
+            //背景音乐
+            self.playEffectAudio("audios_btn.wav")
+            
+            
+        }
+        else if btn.name! == "btn_effect" {
+            //效果声音
+            self.playEffectAudio("audios_btn.wav")
+            
+            
+        }
+        else if btn.name! == "btn_exit" {
+            //退出游戏
+            
+            var alert = UIAlertView(title: NSLocalizedString("Alert_Title", tableName: nil, comment: "title"), message: NSLocalizedString("GameScene_AlertMessage", tableName: nil, comment: "message"), delegate: self, cancelButtonTitle: NSLocalizedString("GameScene_AlertBtnNo", tableName: nil, comment: "no"), otherButtonTitles: NSLocalizedString("GameScene_AlertBtnYes", tableName: nil, comment: "yes"))
+            alert.tag = 1
+            alert.show()
+            
+        }
+        else if btn.name! == "btn_next" {
+            //下一关
+            
+        }
+        else if btn.name! == "btn_restart" {
+            //重新开始
+            
+        }
+        
     }
     
     func enemyFishEmergence(enemyFishNode: EFObjBaseEnemyFishNode) {
@@ -364,6 +429,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
         
     }
     
+    //SKPhysicsContactDelegate
     func didBeginContact(contact: SKPhysicsContact) {
 //        println("碰撞的回调" + contact.bodyA.contactTestBitMask.description + " " + contact.bodyB.contactTestBitMask.description)
         
@@ -372,6 +438,29 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate {
         }
         else if contact.bodyB.contactTestBitMask == 1 {
             self.collisionPlayerToAny(contact.bodyB.node?.parent! as EFObjPlayerNode, target: contact.bodyA.node?.parent! as EFObjBaseEnemyFishNode)
+        }
+        
+    }
+    
+    //UIAlertViewDelegate
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        
+        switch alertView.tag {
+            
+        case 1:
+            //退出游戏
+            if buttonIndex == 1 {
+                self.enabledTouchEvent(false)
+                self.m_isPauseUpdate = true
+                
+                let scene = EFStartScene(fileNamed: "EFStartScene")
+                var t = SKTransition.fadeWithDuration(GameConfig.transitionTime)
+                scene.scaleMode = SKSceneScaleMode.AspectFit
+                self.view?.presentScene(scene, transition: t)
+            }
+            
+        default:
+            println("no handle")
         }
         
     }

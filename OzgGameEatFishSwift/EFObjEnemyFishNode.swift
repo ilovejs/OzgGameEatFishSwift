@@ -20,29 +20,37 @@ class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
         
         self.m_type = type
         
+        var animName: String?
+        
         switch self.m_type! {
         case EnemyFishType.Fish2:
-            self.m_animSpriteList = EFObjFishData.fish2()
+            self.m_textureAtlas = SKTextureAtlas(named: "Fish2")
+            animName = "Fish2_"
             
         case EnemyFishType.Fish3:
-            self.m_animSpriteList = EFObjFishData.fish3()
+            self.m_textureAtlas = SKTextureAtlas(named: "Fish3")
+            animName = "Fish3_"
             
         case EnemyFishType.Fish4:
-            self.m_animSpriteList = EFObjFishData.fish4()
+            self.m_textureAtlas = SKTextureAtlas(named: "Fish4")
+            animName = "Fish4_"
             
         case EnemyFishType.Fish5:
-            self.m_animSpriteList = EFObjFishData.fish5()
+            self.m_textureAtlas = SKTextureAtlas(named: "Fish5")
+            animName = "Fish5_"
             
         case EnemyFishType.Fish6:
-            self.m_animSpriteList = EFObjFishData.fish6()
+            self.m_textureAtlas = SKTextureAtlas(named: "Fish6")
+            animName = "Fish6_"
             
         default:
-            self.m_animSpriteList = EFObjFishData.fish1()
+            self.m_textureAtlas = SKTextureAtlas(named: "Fish1")
+            animName = "Fish1_"
             
         }
         
-        var fishTex = NSBundle.mainBundle().pathForResource((self.m_animSpriteList?[0].stringByDeletingPathExtension)!, ofType: self.m_animSpriteList?[0].pathExtension)!
-        var fish = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(fishTex))
+        var frame = (self.m_textureAtlas?.textureNames[0] as? String)!
+        var fish = SKSpriteNode(texture: (self.m_textureAtlas?.textureNamed(frame))!)
         fish.position = CGPoint.zeroPoint
         fish.name = "fish"
         
@@ -77,7 +85,7 @@ class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
         fish.physicsBody?.categoryBitMask = 1
         self.addChild(fish)
                 
-        self.playAnim()
+        self.playAnim(animName!)
     }
     
     deinit {

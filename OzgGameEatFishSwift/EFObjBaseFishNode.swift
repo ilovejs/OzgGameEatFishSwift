@@ -12,7 +12,8 @@ class EFObjBaseFishNode: SKNode {
     var m_orientation: Orientation? //朝向
     var m_isMoving: Bool?
     
-    var m_animSpriteList: Array<String>?
+    var m_textureAtlas: SKTextureAtlas?
+    var m_animName: String?
     
     override init() {
         super.init()
@@ -111,14 +112,22 @@ class EFObjBaseFishNode: SKNode {
     }
     
     func playAnim() {
+        self.playAnim(self.m_animName!)
+    }
+    
+    func playAnim(animName: String) {
+        self.m_animName = animName
+        
         var fish = self.childNodeWithName("fish") as SKSpriteNode?
-        if fish != nil && self.m_animSpriteList != nil {
+        if fish != nil && self.m_textureAtlas != nil {
             
             var frames: Array<SKTexture> = []
             
-            for var i = 0; i < self.m_animSpriteList?.count; i++ {
-                var texName = NSBundle.mainBundle().pathForResource((self.m_animSpriteList?[i].stringByDeletingPathExtension)!, ofType: self.m_animSpriteList?[i].pathExtension)!
-                frames.append((OzgSKTextureManager.getInstance!.get(texName))!)
+            for var i = 0; i < (self.m_textureAtlas?.textureNames.count)!; i++ {
+                var frame = self.m_animName!.stringByAppendingFormat("%i.png", i + 1)
+                println(frame)
+                println(self.m_textureAtlas?.textureNames[i])
+                frames.append((self.m_textureAtlas?.textureNamed(frame))!)
             }
             
             //这个动画执行了之后，第二帧以后会跑到最上面，不知道是什么问题

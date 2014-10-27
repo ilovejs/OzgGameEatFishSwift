@@ -7,10 +7,10 @@ class EFObjJellyfishNode: EFObjBaseEnemyFishNode {
     override init() {
         super.init()
         
-        self.m_animSpriteList = EFObjFishData.jellyFish()
+        self.m_textureAtlas = SKTextureAtlas(named: "jellyfish")
         
-        var fishTex = NSBundle.mainBundle().pathForResource((self.m_animSpriteList?[0].stringByDeletingPathExtension)!, ofType: self.m_animSpriteList?[0].pathExtension)!
-        var fish = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(fishTex))
+        var frame = (self.m_textureAtlas?.textureNames[0] as? String)!
+        var fish = SKSpriteNode(texture: (self.m_textureAtlas?.textureNamed(frame))!)
         fish.position = CGPoint.zeroPoint
         fish.name = "fish"
         fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(67, 94))
@@ -24,7 +24,7 @@ class EFObjJellyfishNode: EFObjBaseEnemyFishNode {
         fish.physicsBody?.categoryBitMask = 1        
         self.addChild(fish)
         
-        self.playAnim()
+        self.playAnim("jellyfish")
     }
     
     deinit {

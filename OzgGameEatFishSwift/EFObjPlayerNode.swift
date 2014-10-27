@@ -16,14 +16,14 @@ class EFObjPlayerNode: EFObjBaseFishNode {
     override init() {
         super.init()
         
-        self.m_animSpriteList = EFObjFishData.playerFish()
+        self.m_textureAtlas = SKTextureAtlas(named: "playerFish")
+        println(self.m_textureAtlas?.textureNames.count)
         self.m_isMoving = false
         self.m_status = Status.Small
         self.m_isInvincible = false
         
-        var fishTex = NSBundle.mainBundle().pathForResource((self.m_animSpriteList?[0].stringByDeletingPathExtension)!, ofType: self.m_animSpriteList?[0].pathExtension)!
-        
-        var fish = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(fishTex))
+        var frame = (self.m_textureAtlas?.textureNames[0] as? String)!
+        var fish = SKSpriteNode(texture: (self.m_textureAtlas?.textureNamed(frame))!)
         fish.position = CGPoint.zeroPoint
         fish.name = "fish"
         fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(16, 16))
@@ -60,26 +60,31 @@ class EFObjPlayerNode: EFObjBaseFishNode {
         
         var water = self.childNodeWithName("water") as SKSpriteNode?
         
+        var animName: String?
+        
         switch self.m_status! {
         
         case Status.Normal:
-            self.m_animSpriteList = EFObjFishData.playerMFish()
+            self.m_textureAtlas = SKTextureAtlas(named: "playerMFish")
+            animName = "playerMFish"
             
             water?.setScale(10.0)
             
         case Status.Big:
-            self.m_animSpriteList = EFObjFishData.playerBFish()
+            self.m_textureAtlas = SKTextureAtlas(named: "playerBFish")
+            animName = "playerBFish"
             
             water?.setScale(15.0)
             
         default:
-            self.m_animSpriteList = EFObjFishData.playerFish()
+            self.m_textureAtlas = SKTextureAtlas(named: "playerFish")
+            animName = "playerFish"
             
             water?.setScale(5.0)
             
         }
         
-        self.playAnim()
+        self.playAnim(animName!)
     }
     
     func invincible() {

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8905AB7D19D906F70006CF15 /* cump in Resources */ = {isa = PBXBuildFile; fileRef = 8905AB7A19D906F70006CF15 /* cump */; };
-		8905AB7E19D906F70006CF15 /* Fishall in Resources */ = {isa = PBXBuildFile; fileRef = 8905AB7B19D906F70006CF15 /* Fishall */; };
 		8905AB7F19D906F70006CF15 /* Fishtales in Resources */ = {isa = PBXBuildFile; fileRef = 8905AB7C19D906F70006CF15 /* Fishtales */; };
 		891049F919CD300000CA223E /* audios_bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 891049DE19CD300000CA223E /* audios_bg.mp3 */; };
 		891049FA19CD300000CA223E /* audios_btn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 891049DF19CD300000CA223E /* audios_btn.wav */; };
@@ -36,6 +35,17 @@
 		89104A1919CD352500CA223E /* EFStartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89104A1819CD352500CA223E /* EFStartScene.sks */; };
 		89104A1B19CD42CE00CA223E /* EFGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89104A1A19CD42CE00CA223E /* EFGameScene.sks */; };
 		892E07A119E4000600E4EA68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892E07A019E4000600E4EA68 /* Images.xcassets */; };
+		8954A32A19FE06CC002964D9 /* Fish1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32019FE06CC002964D9 /* Fish1.atlas */; };
+		8954A32B19FE06CC002964D9 /* Fish2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32119FE06CC002964D9 /* Fish2.atlas */; };
+		8954A32C19FE06CC002964D9 /* Fish3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32219FE06CC002964D9 /* Fish3.atlas */; };
+		8954A32D19FE06CC002964D9 /* Fish4.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32319FE06CC002964D9 /* Fish4.atlas */; };
+		8954A32E19FE06CC002964D9 /* Fish5.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32419FE06CC002964D9 /* Fish5.atlas */; };
+		8954A32F19FE06CC002964D9 /* Fish6.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32519FE06CC002964D9 /* Fish6.atlas */; };
+		8954A33019FE06CC002964D9 /* jellyfish.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32619FE06CC002964D9 /* jellyfish.atlas */; };
+		8954A33119FE06CC002964D9 /* playerBFish.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32719FE06CC002964D9 /* playerBFish.atlas */; };
+		8954A33219FE06CC002964D9 /* playerFish.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32819FE06CC002964D9 /* playerFish.atlas */; };
+		8954A33319FE06CC002964D9 /* playerMFish.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32919FE06CC002964D9 /* playerMFish.atlas */; };
+		8954A33519FE0785002964D9 /* gold.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A33419FE0785002964D9 /* gold.atlas */; };
 		8974EA4019D970C00079CED6 /* blister.png in Resources */ = {isa = PBXBuildFile; fileRef = 8974EA3F19D970C00079CED6 /* blister.png */; };
 		8981D72E19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8981D72D19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift */; };
 		8999F18019DA3D41009B72CF /* OzgSwiftUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8999F17F19DA3D41009B72CF /* OzgSwiftUtility.swift */; };
@@ -70,7 +80,6 @@
 
 /* Begin PBXFileReference section */
 		8905AB7A19D906F70006CF15 /* cump */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cump; path = Resources/cump; sourceTree = "<group>"; };
-		8905AB7B19D906F70006CF15 /* Fishall */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fishall; path = Resources/Fishall; sourceTree = "<group>"; };
 		8905AB7C19D906F70006CF15 /* Fishtales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fishtales; path = Resources/Fishtales; sourceTree = "<group>"; };
 		891049DE19CD300000CA223E /* audios_bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = audios_bg.mp3; path = Resources/audios_bg.mp3; sourceTree = "<group>"; };
 		891049DF19CD300000CA223E /* audios_btn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = audios_btn.wav; path = Resources/audios_btn.wav; sourceTree = "<group>"; };
@@ -98,6 +107,17 @@
 		89104A1819CD352500CA223E /* EFStartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EFStartScene.sks; sourceTree = "<group>"; };
 		89104A1A19CD42CE00CA223E /* EFGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EFGameScene.sks; sourceTree = "<group>"; };
 		892E07A019E4000600E4EA68 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8954A32019FE06CC002964D9 /* Fish1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Fish1.atlas; path = Resources/Fish1.atlas; sourceTree = "<group>"; };
+		8954A32119FE06CC002964D9 /* Fish2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Fish2.atlas; path = Resources/Fish2.atlas; sourceTree = "<group>"; };
+		8954A32219FE06CC002964D9 /* Fish3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Fish3.atlas; path = Resources/Fish3.atlas; sourceTree = "<group>"; };
+		8954A32319FE06CC002964D9 /* Fish4.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Fish4.atlas; path = Resources/Fish4.atlas; sourceTree = "<group>"; };
+		8954A32419FE06CC002964D9 /* Fish5.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Fish5.atlas; path = Resources/Fish5.atlas; sourceTree = "<group>"; };
+		8954A32519FE06CC002964D9 /* Fish6.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Fish6.atlas; path = Resources/Fish6.atlas; sourceTree = "<group>"; };
+		8954A32619FE06CC002964D9 /* jellyfish.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = jellyfish.atlas; path = Resources/jellyfish.atlas; sourceTree = "<group>"; };
+		8954A32719FE06CC002964D9 /* playerBFish.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = playerBFish.atlas; path = Resources/playerBFish.atlas; sourceTree = "<group>"; };
+		8954A32819FE06CC002964D9 /* playerFish.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = playerFish.atlas; path = Resources/playerFish.atlas; sourceTree = "<group>"; };
+		8954A32919FE06CC002964D9 /* playerMFish.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = playerMFish.atlas; path = Resources/playerMFish.atlas; sourceTree = "<group>"; };
+		8954A33419FE0785002964D9 /* gold.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = gold.atlas; path = Resources/gold.atlas; sourceTree = "<group>"; };
 		8974EA3F19D970C00079CED6 /* blister.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blister.png; path = Resources/blister.png; sourceTree = "<group>"; };
 		8981D72D19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjBaseEnemyFishNode.swift; sourceTree = "<group>"; };
 		8999F17F19DA3D41009B72CF /* OzgSwiftUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OzgSwiftUtility.swift; sourceTree = "<group>"; };
@@ -145,10 +165,18 @@
 		891049D719CD2FBD00CA223E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				89CCFE6119DAB6E700332828 /* strings */,
-				8974EA3F19D970C00079CED6 /* blister.png */,
+				8954A33419FE0785002964D9 /* gold.atlas */,
+				8954A32019FE06CC002964D9 /* Fish1.atlas */,
+				8954A32119FE06CC002964D9 /* Fish2.atlas */,
+				8954A32219FE06CC002964D9 /* Fish3.atlas */,
+				8954A32319FE06CC002964D9 /* Fish4.atlas */,
+				8954A32419FE06CC002964D9 /* Fish5.atlas */,
+				8954A32519FE06CC002964D9 /* Fish6.atlas */,
+				8954A32619FE06CC002964D9 /* jellyfish.atlas */,
+				8954A32719FE06CC002964D9 /* playerBFish.atlas */,
+				8954A32819FE06CC002964D9 /* playerFish.atlas */,
+				8954A32919FE06CC002964D9 /* playerMFish.atlas */,
 				8905AB7A19D906F70006CF15 /* cump */,
-				8905AB7B19D906F70006CF15 /* Fishall */,
 				8905AB7C19D906F70006CF15 /* Fishtales */,
 				891049DE19CD300000CA223E /* audios_bg.mp3 */,
 				891049DF19CD300000CA223E /* audios_btn.wav */,
@@ -160,9 +188,11 @@
 				891049E519CD300000CA223E /* audios_growth.mp3 */,
 				891049E619CD300000CA223E /* audios_jellyfish.mp3 */,
 				891049E719CD300000CA223E /* audios_playbyeat.mp3 */,
+				89CCFE6119DAB6E700332828 /* strings */,
 				891049E819CD300000CA223E /* bg1.png */,
 				891049E919CD300000CA223E /* bg2.png */,
 				891049EA19CD300000CA223E /* bg3.png */,
+				8974EA3F19D970C00079CED6 /* blister.png */,
 				891049EB19CD300000CA223E /* btn1_dw.png */,
 				891049EC19CD300000CA223E /* btn1_up.png */,
 				891049ED19CD300000CA223E /* btn2_dw.png */,
@@ -340,13 +370,19 @@
 			files = (
 				89104A0919CD300000CA223E /* btn2_up.png in Resources */,
 				89104A1119CD300000CA223E /* pause_up.png in Resources */,
+				8954A33219FE06CC002964D9 /* playerFish.atlas in Resources */,
 				89104A0119CD300000CA223E /* audios_jellyfish.mp3 in Resources */,
 				892E07A119E4000600E4EA68 /* Images.xcassets in Resources */,
 				891049F919CD300000CA223E /* audios_bg.mp3 in Resources */,
+				8954A32A19FE06CC002964D9 /* Fish1.atlas in Resources */,
 				89104A0519CD300000CA223E /* bg3.png in Resources */,
 				89104A0819CD300000CA223E /* btn2_dw.png in Resources */,
 				89104A1919CD352500CA223E /* EFStartScene.sks in Resources */,
-				8905AB7E19D906F70006CF15 /* Fishall in Resources */,
+				8954A33519FE0785002964D9 /* gold.atlas in Resources */,
+				8954A32B19FE06CC002964D9 /* Fish2.atlas in Resources */,
+				8954A32E19FE06CC002964D9 /* Fish5.atlas in Resources */,
+				8954A33319FE06CC002964D9 /* playerMFish.atlas in Resources */,
+				8954A33019FE06CC002964D9 /* jellyfish.atlas in Resources */,
 				8905AB7F19D906F70006CF15 /* Fishtales in Resources */,
 				891049FC19CD300000CA223E /* audios_eatfish1.mp3 in Resources */,
 				8905AB7D19D906F70006CF15 /* cump in Resources */,
@@ -361,6 +397,7 @@
 				89104A0319CD300000CA223E /* bg1.png in Resources */,
 				8974EA4019D970C00079CED6 /* blister.png in Resources */,
 				89CCFE6919DAB74300332828 /* Localizable.strings in Resources */,
+				8954A32F19FE06CC002964D9 /* Fish6.atlas in Resources */,
 				89104A1019CD300000CA223E /* pause_dw.png in Resources */,
 				89104A0A19CD300000CA223E /* Default.png in Resources */,
 				89CCFE6619DAB73D00332828 /* InfoPlist.strings in Resources */,
@@ -368,9 +405,12 @@
 				89104A0619CD300000CA223E /* btn1_dw.png in Resources */,
 				89104A1319CD300000CA223E /* scene_start_title.png in Resources */,
 				89104A1219CD300000CA223E /* progressk.png in Resources */,
+				8954A33119FE06CC002964D9 /* playerBFish.atlas in Resources */,
 				89104A0019CD300000CA223E /* audios_growth.mp3 in Resources */,
 				89F995F919CD041400A91DEC /* Main.storyboard in Resources */,
 				89104A0719CD300000CA223E /* btn1_up.png in Resources */,
+				8954A32D19FE06CC002964D9 /* Fish4.atlas in Resources */,
+				8954A32C19FE06CC002964D9 /* Fish3.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
