@@ -5,13 +5,6 @@ import SpriteKit
 class EFStartScene: EFBaseScene {
     
     deinit {
-        let bgTexName = NSBundle.mainBundle().pathForResource("bg1", ofType: "png")!
-        let titleTexName = NSBundle.mainBundle().pathForResource("scene_start_title", ofType: "png")!
-        
-        OzgSKTextureManager.getInstance!.remove(bgTexName)
-        OzgSKTextureManager.getInstance!.remove(titleTexName)
-        
-        OzgSKTextureManager.getInstance!.dump()
         
         println("EFStartScene释放")
     }
@@ -19,25 +12,22 @@ class EFStartScene: EFBaseScene {
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
         
-        let bgTexName = NSBundle.mainBundle().pathForResource("bg1", ofType: "png")!
-        let titleTexName = NSBundle.mainBundle().pathForResource("scene_start_title", ofType: "png")!
-                
-        var bg = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(bgTexName))
+        var bg = SKSpriteNode(imageNamed: "bg1")
         bg.position = CGPointMake(self.size.width / 2, self.size.height / 2)
         self.addChild(bg)
         
-        var title = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(titleTexName))
+        var title = SKSpriteNode(imageNamed: "scene_start_title")
         title.position = CGPointMake(self.size.width / 2, 510)
         title.name = "title"
         self.addChild(title)
         
-        var btnStart = OzgSKButtonNode(normalImg: "btn1_up.png", downImg: "btn1_dw.png", disableImg: "btn1_dw.png", title: NSLocalizedString("StartScene_BtnStart", tableName: nil, comment: "Start"))
+        var btnStart = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: NSLocalizedString("StartScene_BtnStart", tableName: nil, comment: "Start"))
         btnStart.position = CGPointMake(self.size.width / 2, 230)
         btnStart.name = "btn_start"
         btnStart.setTouchedCallBack(self.onButton)
         self.addChild(btnStart)
         
-        var btnHelp = OzgSKButtonNode(normalImg: "btn1_up.png", downImg: "btn1_dw.png", disableImg: "btn1_dw.png", title: NSLocalizedString("StartScene_BtnHelp", tableName: nil, comment: "Help"))
+        var btnHelp = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: NSLocalizedString("StartScene_BtnHelp", tableName: nil, comment: "Help"))
         btnHelp.position = CGPointMake(self.size.width / 2, 130)
         btnHelp.name = "btn_help"
         btnHelp.setTouchedCallBack(self.onButton)
@@ -71,13 +61,13 @@ class EFStartScene: EFBaseScene {
             self.childNodeWithName("btn_start")?.hidden = true
             self.childNodeWithName("btn_help")?.hidden = true
             
-            var btnBack = OzgSKButtonNode(normalImg: "btn1_up.png", downImg: "btn1_dw.png", disableImg: "btn1_dw.png", title: NSLocalizedString("StartScene_HelpBtnBack", tableName: nil, comment: "Back"))
+            var btnBack = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: NSLocalizedString("StartScene_HelpBtnBack", tableName: nil, comment: "Back"))
             btnBack.position = CGPointMake(830, 60)
             btnBack.name = "btn_back"
             btnBack.setTouchedCallBack(self.onButton)
             self.addChild(btnBack)
             
-            var howtoplay = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(NSBundle.mainBundle().pathForResource("Fishtales/howtoplay", ofType: "png")!))
+            var howtoplay = SKSpriteNode(imageNamed: "howtoplay")
             howtoplay.position = CGPointMake(self.size.width / 2, 350)
             howtoplay.name = "howtoplay"
             self.addChild(howtoplay)
@@ -116,10 +106,7 @@ class EFStartScene: EFBaseScene {
             self.childNodeWithName("btn_help")?.hidden = false
             self.childNodeWithName("btn_back")?.removeFromParent()
             self.childNodeWithName("howtoplay")?.removeFromParent()
-            
-            let howtoplayTexName = NSBundle.mainBundle().pathForResource("Fishtales/howtoplay", ofType: "png")!
-            OzgSKTextureManager.getInstance!.remove(howtoplayTexName)
-            
+                        
         default:
             //进入游戏
             

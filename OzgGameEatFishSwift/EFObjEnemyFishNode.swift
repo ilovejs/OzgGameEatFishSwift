@@ -91,5 +91,5 @@ class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
     deinit {
         println("EFObjEnemyFishNode释放")
     }
-    
+        
 }

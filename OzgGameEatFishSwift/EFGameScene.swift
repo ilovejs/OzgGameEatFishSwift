@@ -20,21 +20,6 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     deinit {
         
-        
-        
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("bg1", ofType: "png")!)
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("bg2", ofType: "png")!)
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("bg3", ofType: "png")!)
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/fishlife", ofType: "png")!)
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("blister", ofType: "png")!)
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/progress", ofType: "png")!)
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/water1", ofType: "png")!)
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("progressk", ofType: "png")!)
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/fishnum", ofType: "png")!)
-        OzgSKTextureManager.getInstance!.remove(NSBundle.mainBundle().pathForResource("Fishtales/completebg", ofType: "png")!)
-        
-        //OzgSKTextureManager.getInstance!.dump()
-        
         println("EFGameScene释放")
     }
     
@@ -54,13 +39,13 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         self.m_eatFishTotalType3 = 0
         self.m_eatFishTotalType4 = 0
         
-        var bgList = [ "bg1.png", "bg2.png", "bg3.png" ]
+        var bgList = [ "bg1", "bg2", "bg3" ]
         var bgIndex = Int(arc4random_uniform(UInt32(bgList.count)))
         
         self.m_bg = bgList[bgIndex]
         
         //背景
-        var bg = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(NSBundle.mainBundle().pathForResource(self.m_bg!.stringByDeletingPathExtension, ofType: self.m_bg!.pathExtension)!))
+        var bg = SKSpriteNode(imageNamed: self.m_bg!)
         bg.position = CGPointMake(self.size.width / 2, self.size.height / 2)
         bg.name = "bg"
         self.addChild(bg)
@@ -74,7 +59,15 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         fishNode.position = CGPoint.zeroPoint
         fishNode.name = "fish_node"
         self.addChild(fishNode)
-                
+        
+        //player
+        self.m_isPauseUpdate = true
+        var player = EFObjPlayerNode()
+        player.name = "player"
+        player.position = CGPointMake(self.size.width / 2, 800)
+        fishNode.addChild(player)
+        player.invincible()
+        
         //test anim
         
 //        var jellyFish = EFObjJellyfishNode()
@@ -94,6 +87,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         stageNumLab.position = CGPointMake(750, 600)
         stageNumLab.fontName = GameConfig.globalFontName01
         stageNumLab.fontSize = 28
+        stageNumLab.name = "stageNumLab"
         self.addChild(stageNumLab)
         
         var scoreLab = SKLabelNode(text: NSLocalizedString("GameScene_LabScore", tableName: nil, comment: "Score").stringByAppendingFormat("%i", self.m_score!))
@@ -105,7 +99,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         scoreLab.name = "scoreLab"
         self.addChild(scoreLab)
         
-        var btnPause = OzgSKButtonNode(normalImg: "pause_up.png", downImg: "pause_dw.png", disableImg: "pause_dw.png", title: nil)
+        var btnPause = OzgSKButtonNode(normalImg: "pause_up", downImg: "pause_dw", disableImg: "pause_dw", title: nil)
         btnPause.position = CGPointMake(self.size.width - 125, self.size.height - 125)
         btnPause.name = "btn_pause"
         btnPause.setTouchedCallBack(self.onButton)
@@ -113,14 +107,12 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         
         //左上角的部分
         
-        var progressBgTex = NSBundle.mainBundle().pathForResource("Fishtales/progress", ofType: "png")!
-        var progressBg = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(progressBgTex))
+        var progressBg = SKSpriteNode(imageNamed: "progress")
         progressBg.position = CGPointMake(80, 610)
         self.addChild(progressBg)
         
         //暂时使用SKSpriteNode来替代进度条
-        var progressTex = NSBundle.mainBundle().pathForResource("progressk", ofType: "png")!
-        var progress = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(progressTex))
+        var progress = SKSpriteNode(imageNamed: "progressk")
         progress.position = CGPointMake(80, 594)
         progress.position = CGPointMake(progress.position.x - (progress.size.width / 2), progress.position.y)
         progress.name = "progress"
@@ -128,8 +120,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         progress.xScale = 0.0
         self.addChild(progress)
         
-        var fishLifeTex = NSBundle.mainBundle().pathForResource("Fishtales/fishlife", ofType: "png")!
-        var fishLife = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(fishLifeTex))
+        var fishLife = SKSpriteNode(imageNamed: "fishlife")
         fishLife.position = CGPointMake(70, 550)
         self.addChild(fishLife)
         
@@ -142,17 +133,11 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         fishLifeLab.name = "fishLifeLab"
         self.addChild(fishLifeLab)
         
-        //player
-        self.m_isPauseUpdate = true
-        var player = EFObjPlayerNode()
-        player.name = "player"
-        player.position = CGPointMake(self.size.width / 2, 800)
-        fishNode.addChild(player)
-        player.invincible()
-        
         self.enabledTouchEvent(false)
         
-        self.gameStart()
+        self.runAction(SKAction.waitForDuration(GameConfig.transitionTime), completion: {
+            self.gameStart()
+        })
         
     }
     
@@ -246,8 +231,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         
         var fishNode = self.childNodeWithName("fish_node")
         var player = fishNode?.childNodeWithName("player") as EFObjPlayerNode?
-//        if player != nil && ((player as EFObjPlayerNode?)?.m_isMoving)! == true {
-        if player != nil {
+        if player != nil && ((player as EFObjPlayerNode?)?.m_isMoving)! == true {
             var touch: UITouch? = touches.anyObject() as UITouch?
             
             var beginPoint =  touch?.locationInNode(self)
@@ -255,19 +239,13 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
             var offset = CGPointMake((beginPoint?.x)! - (endPoint?.x)!, (beginPoint?.y)! - (endPoint?.y)!)
             var toPoint = CGPointMake((player?.position.x)! + offset.x, (player?.position.y)! + offset.y)
             
-            player?.position = toPoint
-            
             var toX = (player?.position.x)!
             var toY = (player?.position.y)!
             
-            var rect = CGRectMake((player?.position.x)!, (player?.position.y)!, (player?.fishSize().width)!, (player?.fishSize().height)!)
-            var moveRect = CGRectMake(rect.size.width / 2, rect.size.height / 2, self.frame.width - (rect.size.width / 2), self.frame.height - (rect.size.height / 2))
-         
-            //如果toPoint的x存在moveRect的宽度范围里面则x为可移动，y的情况一样
-            if toPoint.x >= moveRect.origin.x && toPoint.x <= moveRect.size.width {
+            if toPoint.x >= 0 && toPoint.x <= self.size.width {
                 toX = toPoint.x
             }
-            if toPoint.y >= moveRect.origin.y && toPoint.y <= moveRect.size.height {
+            if toPoint.y >= 0 && toPoint.y <= self.size.height {
                 toY = toPoint.y
             }
             player?.position = CGPointMake(toX, toY)
@@ -303,7 +281,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     //水泡粒子系统
     func showBlister(name: String, position: CGPoint) {
         var blisterLeft = SKEmitterNode()
-        blisterLeft.particleTexture = OzgSKTextureManager.getInstance!.get(NSBundle.mainBundle().pathForResource("blister", ofType: "png")!)
+        blisterLeft.particleTexture = SKTexture(imageNamed: "blister")
         blisterLeft.particleBirthRate = 1
         blisterLeft.particleLifetime = 8
         blisterLeft.particlePositionRange = CGVectorMake(75, 0)
@@ -367,10 +345,72 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         else if btn.name! == "btn_next" {
             //下一关
             
+            self.m_stageNum = self.m_stageNum! + 1
+            if self.m_stageNum! > GameConfig.maxStage {
+                self.m_stageNum = GameConfig.maxStage
+            }
+            
+            var stageNumLab = self.childNodeWithName("stageNumLab") as SKLabelNode?
+            stageNumLab?.text = NSLocalizedString("GameScene_LabStage", tableName: nil, comment: "Stage").stringByAppendingFormat("%i", self.m_stageNum!)
+            
+            self.m_eatFish = 0
+            self.m_eatFishTotal = 0
+            self.m_eatFishTotalType1And2 = 0
+            self.m_eatFishTotalType3 = 0
+            self.m_eatFishTotalType4 = 0
+            
+            var progress = self.childNodeWithName("progress") as SKSpriteNode?
+            progress?.xScale = 0
+            
+            var clearNode = self.childNodeWithName("clearNode")
+            clearNode?.removeFromParent()
+            
+            var fishNode = self.childNodeWithName("fish_node")
+            
+            self.m_isPauseUpdate = true
+            var player = EFObjPlayerNode()
+            player.name = "player"
+            player.position = CGPointMake(self.size.width / 2, 800)
+            fishNode?.addChild(player)
+            player.invincible()
+            
+            self.gameStart()
         }
         else if btn.name! == "btn_restart" {
             //重新开始
             
+            self.m_score = 0
+            self.m_stageNum = 1
+            self.m_playerLife = GameConfig.players
+            self.m_eatFish = 0
+            self.m_eatFishTotal = 0
+            self.m_eatFishTotalType1And2 = 0
+            self.m_eatFishTotalType3 = 0
+            self.m_eatFishTotalType4 = 0
+            
+            var stageNumLab = self.childNodeWithName("stageNumLab") as SKLabelNode?
+            stageNumLab?.text = NSLocalizedString("GameScene_LabStage", tableName: nil, comment: "Stage").stringByAppendingFormat("%i", self.m_stageNum!)
+            
+            var scoreLab = self.childNodeWithName("scoreLab") as SKLabelNode?
+            scoreLab?.text = NSLocalizedString("GameScene_LabScore", tableName: nil, comment: "Score").stringByAppendingFormat("%i", self.m_score!)
+            
+            var fishLifeLab = self.childNodeWithName("fishLifeLab") as SKLabelNode?
+            fishLifeLab?.text = String(self.m_playerLife!)
+            
+            var progress = self.childNodeWithName("progress") as SKSpriteNode?
+            progress?.xScale = 0.0
+            
+            var gameoverNode = self.childNodeWithName("gameoverNode")
+            gameoverNode?.removeFromParent()
+            
+            var fishNode = self.childNodeWithName("fish_node")
+            var player = EFObjPlayerNode()
+            player.name = "player"
+            player.position = CGPointMake(self.size.width / 2, 800)
+            fishNode?.addChild(player)
+            player.invincible()
+            
+            self.gameStart()
         }
         
     }
@@ -439,6 +479,12 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         else if contact.bodyB.contactTestBitMask == 1 {
             self.collisionPlayerToAny(contact.bodyB.node?.parent! as EFObjPlayerNode, target: contact.bodyA.node?.parent! as EFObjBaseEnemyFishNode)
         }
+        else if contact.bodyA.contactTestBitMask == 3 {
+            self.collisionEnemyToAny(contact.bodyA.node?.parent! as EFObjEnemyFishNode, target: contact.bodyB.node?.parent! as EFObjBaseFishNode)
+        }
+        else if contact.bodyB.contactTestBitMask == 3 {
+            self.collisionEnemyToAny(contact.bodyB.node?.parent! as EFObjEnemyFishNode, target: contact.bodyA.node?.parent! as EFObjBaseFishNode)
+        }
         
     }
     
@@ -465,6 +511,7 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         
     }
     
+    //player碰撞
     func collisionPlayerToAny(player: EFObjPlayerNode, target: EFObjBaseEnemyFishNode) {
         
         var fishNode = self.childNodeWithName("fish_node")
@@ -538,13 +585,11 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
                         clearNode.name = "clearNode"
                         self.addChild(clearNode)
                         
-                        var clearBgTex = NSBundle.mainBundle().pathForResource("Fishtales/completebg", ofType: "png")!
-                        var clearBg = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(clearBgTex))
+                        var clearBg = SKSpriteNode(imageNamed: "completebg")
                         clearBg.position = CGPointMake(self.size.width / 2, self.size.height / 2)
                         clearNode.addChild(clearBg)
                         
-                        var fishNumTex = NSBundle.mainBundle().pathForResource("Fishtales/fishnum", ofType: "png")!
-                        var fishNum = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(fishNumTex))
+                        var fishNum = SKSpriteNode(imageNamed: "fishnum")
                         fishNum.position = CGPointMake(self.size.width / 2, self.size.height / 2)
                         clearNode.addChild(fishNum)
                         
@@ -578,13 +623,13 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
                         gameClearLab3.fontSize = 30
                         clearNode.addChild(gameClearLab3)
                         
-                        var btnExit = OzgSKButtonNode(normalImg: "btn1_up.png", downImg: "btn1_dw.png", disableImg: "btn1_dw.png", title: NSLocalizedString("GameScene_GameClearBtnQuit", tableName: nil, comment: "Quit"))
+                        var btnExit = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: NSLocalizedString("GameScene_GameClearBtnQuit", tableName: nil, comment: "Quit"))
                         btnExit.position = CGPointMake(280, 120)
                         btnExit.name = "btn_exit"
                         btnExit.setTouchedCallBack(self.onButton)
                         clearNode.addChild(btnExit)
                         
-                        var btnNext = OzgSKButtonNode(normalImg: "btn1_up.png", downImg: "btn1_dw.png", disableImg: "btn1_dw.png", title: NSLocalizedString("GameScene_GameClearBtnNext", tableName: nil, comment: "Next"))
+                        var btnNext = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: NSLocalizedString("GameScene_GameClearBtnNext", tableName: nil, comment: "Next"))
                         btnNext.position = CGPointMake(self.size.width - 280, 120)
                         btnNext.name = "btn_next"
                         btnNext.setTouchedCallBack(self.onButton)
@@ -604,13 +649,127 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
                     
                 }
                 else {
-                
+                    //如果在可控制状态下，不是无敌状态的话，就会被比自己大的鱼吃了
+                    
+                    if player.m_isMoving! == true && player.m_isInvincible! == false {
+                        target.cump()
+                        player.removeFromParent()
+                        
+                        self.enabledTouchEvent(false)
+                        
+                        if self.m_playerLife! == 0 {
+                            //没有了生命值就game over
+                            
+                            self.m_isPauseUpdate = true
+                            self.playEffectAudio("audios_complete.mp3")
+                            
+                            self.enabledTouchEvent(false)
+                            
+                            while fishNode?.children.last != nil {
+                                (fishNode?.children.last as EFObjBaseFishNode).removeFromParent()
+                            }
+                            
+                            //game over界面
+                            var gameoverNode = SKNode()
+                            gameoverNode.name = "gameoverNode"
+                            gameoverNode.position = CGPoint.zeroPoint
+                            self.addChild(gameoverNode)
+                            
+                            var gameoverBg = SKSpriteNode(imageNamed: "completebg")
+                            gameoverBg.position = CGPointMake(self.size.width / 2, self.size.height / 2)
+                            gameoverNode.addChild(gameoverBg)
+                            
+                            var title = SKLabelNode(text: NSLocalizedString("GameScene_GameOverLab1", tableName: nil, comment: "title"))
+                            title.fontName = GameConfig.globalFontName01
+                            title.fontSize = 50
+                            title.position = CGPointMake(self.size.width / 2, 470)
+                            gameoverNode.addChild(title)
+                            
+                            var content = SKLabelNode(text: NSLocalizedString("GameScene_GameOverLab2", tableName: nil, comment: "content"))
+                            content.fontName = GameConfig.globalFontName01
+                            content.fontSize = 30
+                            content.position = CGPointMake(self.size.width / 2, 390)
+                            gameoverNode.addChild(content)
+                            
+                            var btnExit = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: NSLocalizedString("GameScene_GameOverBtnQuit", tableName: nil, comment: "Quit"))
+                            btnExit.position = CGPointMake(280, 120)
+                            btnExit.name = "btn_exit"
+                            btnExit.setTouchedCallBack(self.onButton)
+                            gameoverNode.addChild(btnExit)
+                            
+                            var btnRestart = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: NSLocalizedString("GameScene_GameOverBtnRestart", tableName: nil, comment: "Next"))
+                            btnRestart.position = CGPointMake(self.size.width - 280, 120)
+                            btnRestart.name = "btn_restart"
+                            btnRestart.setTouchedCallBack(self.onButton)
+                            gameoverNode.addChild(btnRestart)
+                            
+                        }
+                        else {
+                            self.m_eatFish = 0
+                            self.playEffectAudio("audios_playbyeat.mp3")
+                            
+                            self.m_playerLife = self.m_playerLife! - 1
+                            var fishLifeLab = self.childNodeWithName("fishLifeLab") as SKLabelNode?
+                            fishLifeLab?.text = String(self.m_playerLife!)
+                            self.runAction(SKAction.waitForDuration(2.5), completion: {
+                                
+                                var fishNode = self.childNodeWithName("fish_node")
+                                
+                                var player = EFObjPlayerNode()
+                                player.name = "player"
+                                player.position = CGPointMake(self.size.width / 2, 800)
+                                fishNode?.addChild(player)
+                                player.invincible()
+                                
+                                self.gameStart()
+                            })
+                        }
+                        
+                    }
                 }
                 
             }
             
         }
         else if target.isKindOfClass(EFObjJellyfishNode) {
+            
+            if player.m_isInvincible! == false {
+                self.playEffectAudio("audios_jellyfish.mp3")
+                player.paralysis()
+            }
+            
+        }
+        
+    }
+    
+    //enemy碰撞
+    func collisionEnemyToAny(enemy: EFObjEnemyFishNode, target: EFObjBaseFishNode) {
+        
+        if target.isKindOfClass(EFObjEnemyFishNode) {
+            
+            if enemy.m_type!.hashValue > EFObjEnemyFishNode.EnemyFishType.Fish2.hashValue || (target as EFObjEnemyFishNode).m_type!.hashValue > EFObjEnemyFishNode.EnemyFishType.Fish2.hashValue {
+                
+                //大鱼吃小鱼
+                
+                if enemy.m_type!.hashValue > (target as EFObjEnemyFishNode).m_type!.hashValue {
+                    enemy.cump()
+                    (target as EFObjEnemyFishNode).removeFromParent()
+                }
+                else if (target as EFObjEnemyFishNode).m_type!.hashValue > enemy.m_type!.hashValue {
+                    (target as EFObjEnemyFishNode).cump()
+                    enemy.removeFromParent()
+                }
+                
+            }
+            
+        }
+        else if target.isKindOfClass(EFObjJellyfishNode) {
+            
+            //鲨鱼不执行
+            if enemy.m_type!.hashValue < EFObjEnemyFishNode.EnemyFishType.Fish5.hashValue {
+                self.playEffectAudio("audios_jellyfish.mp3")
+                enemy.paralysis()
+            }
             
         }
         

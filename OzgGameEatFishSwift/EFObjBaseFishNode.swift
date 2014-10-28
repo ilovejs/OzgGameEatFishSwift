@@ -64,10 +64,10 @@ class EFObjBaseFishNode: SKNode {
         
         var fish = self.childNodeWithName("fish") as SKSpriteNode?
         
-        var cumpList = [ "cump/cump1.png", "cump/cump2.png", "cump/cump3.png", "cump/cump4.png", "cump/cump5.png" ]
+        var cumpList = [ "cump1", "cump2", "cump3", "cump4", "cump5" ]
         var cumpIndex = Int(arc4random_uniform(UInt32(cumpList.count)))
         
-        var chum = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(NSBundle.mainBundle().pathForResource(cumpList[cumpIndex].stringByDeletingPathExtension, ofType: cumpList[cumpIndex].pathExtension)!))
+        var chum = SKSpriteNode(imageNamed: cumpList[cumpIndex])
         if self.m_orientation == Orientation.Left {
             
             chum.position = CGPointMake(-chum.size.width / 2, (fish?.size.height)! / 2)
@@ -105,7 +105,7 @@ class EFObjBaseFishNode: SKNode {
         var act4 = SKAction.moveBy(CGVectorMake(3, 0), duration: 0.01)
         
         //麻痹5秒后恢复正常
-        self.runAction(SKAction.sequence([ act1, act2, act3, act4 ]), completion: {
+        self.runAction(SKAction.sequence([ act1, act2, act3, act4, SKAction.waitForDuration(5) ]), completion: {
             self.playAnim()
             self.m_isMoving = true
         })
@@ -124,9 +124,7 @@ class EFObjBaseFishNode: SKNode {
             var frames: Array<SKTexture> = []
             
             for var i = 0; i < (self.m_textureAtlas?.textureNames.count)!; i++ {
-                var frame = self.m_animName!.stringByAppendingFormat("%i.png", i + 1)
-                println(frame)
-                println(self.m_textureAtlas?.textureNames[i])
+                var frame = self.m_animName!.stringByAppendingFormat("%i", i + 1)
                 frames.append((self.m_textureAtlas?.textureNamed(frame))!)
             }
             

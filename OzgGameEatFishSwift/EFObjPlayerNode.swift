@@ -17,7 +17,7 @@ class EFObjPlayerNode: EFObjBaseFishNode {
         super.init()
         
         self.m_textureAtlas = SKTextureAtlas(named: "playerFish")
-        println(self.m_textureAtlas?.textureNames.count)
+        
         self.m_isMoving = false
         self.m_status = Status.Small
         self.m_isInvincible = false
@@ -95,8 +95,7 @@ class EFObjPlayerNode: EFObjBaseFishNode {
         //水泡
         var water = self.childNodeWithName("water") as SKSpriteNode?
         if water == nil {
-            var waterTex = NSBundle.mainBundle().pathForResource("Fishtales/water1", ofType: "png")!
-            water = SKSpriteNode(texture: OzgSKTextureManager.getInstance!.get(waterTex))
+            water = SKSpriteNode(imageNamed: "water1")
             water?.position = CGPoint.zeroPoint
             water?.setScale(5.0)
             water?.name = "water"

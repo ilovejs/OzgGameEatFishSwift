@@ -4,10 +4,6 @@ import SpriteKit
 
 class OzgSKButtonNode: SKSpriteNode {
     
-    var m_normal: String?
-    var m_down: String?
-    var m_disable: String?
-    
     var m_normalTex: SKTexture?
     var m_downTex: SKTexture?
     var m_disableTex: SKTexture?
@@ -16,13 +12,9 @@ class OzgSKButtonNode: SKSpriteNode {
     
     init(normalImg: String?, downImg: String?, disableImg: String?, title: String?) {
         
-        self.m_normal = NSBundle.mainBundle().pathForResource(normalImg?.stringByDeletingPathExtension, ofType: normalImg?.pathExtension)
-        self.m_down = NSBundle.mainBundle().pathForResource(downImg?.stringByDeletingPathExtension, ofType: downImg?.pathExtension)
-        self.m_disable = NSBundle.mainBundle().pathForResource(disableImg?.stringByDeletingPathExtension, ofType: disableImg?.pathExtension)
-        
-        self.m_normalTex = OzgSKTextureManager.getInstance!.get(self.m_normal!)
-        self.m_downTex = OzgSKTextureManager.getInstance!.get(self.m_down!)
-        self.m_disableTex = OzgSKTextureManager.getInstance!.get(self.m_disable!)
+        self.m_normalTex = SKTexture(imageNamed: normalImg!)
+        self.m_downTex = SKTexture(imageNamed: downImg!)
+        self.m_disableTex = SKTexture(imageNamed: disableImg!)
         
         self.m_enable = true
         
@@ -40,11 +32,8 @@ class OzgSKButtonNode: SKSpriteNode {
     }
     
     deinit {
-        println("OzgSKButtonNode释放")
         
-        OzgSKTextureManager.getInstance!.remove(self.m_normal!)
-        OzgSKTextureManager.getInstance!.remove(self.m_down!)
-        OzgSKTextureManager.getInstance!.remove(self.m_disable!)
+        println("OzgSKButtonNode释放")
     }
 
     required init(coder aDecoder: NSCoder) {

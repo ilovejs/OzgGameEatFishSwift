@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8905AB7D19D906F70006CF15 /* cump in Resources */ = {isa = PBXBuildFile; fileRef = 8905AB7A19D906F70006CF15 /* cump */; };
-		8905AB7F19D906F70006CF15 /* Fishtales in Resources */ = {isa = PBXBuildFile; fileRef = 8905AB7C19D906F70006CF15 /* Fishtales */; };
 		891049F919CD300000CA223E /* audios_bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 891049DE19CD300000CA223E /* audios_bg.mp3 */; };
 		891049FA19CD300000CA223E /* audios_btn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 891049DF19CD300000CA223E /* audios_btn.wav */; };
 		891049FB19CD300000CA223E /* audios_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 891049E019CD300000CA223E /* audios_complete.mp3 */; };
@@ -35,6 +33,37 @@
 		89104A1919CD352500CA223E /* EFStartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89104A1819CD352500CA223E /* EFStartScene.sks */; };
 		89104A1B19CD42CE00CA223E /* EFGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89104A1A19CD42CE00CA223E /* EFGameScene.sks */; };
 		892E07A119E4000600E4EA68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 892E07A019E4000600E4EA68 /* Images.xcassets */; };
+		8935E4CC19FE1C68009BF9A3 /* progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4C119FE1C68009BF9A3 /* progress.png */; };
+		8935E4CD19FE1C68009BF9A3 /* protect.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4C219FE1C68009BF9A3 /* protect.png */; };
+		8935E4CE19FE1C68009BF9A3 /* protectb.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4C319FE1C68009BF9A3 /* protectb.png */; };
+		8935E4CF19FE1C68009BF9A3 /* Startfish.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4C419FE1C68009BF9A3 /* Startfish.png */; };
+		8935E4D019FE1C68009BF9A3 /* Startfish2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4C519FE1C68009BF9A3 /* Startfish2.png */; };
+		8935E4D119FE1C68009BF9A3 /* Startfish3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4C619FE1C68009BF9A3 /* Startfish3.png */; };
+		8935E4D219FE1C68009BF9A3 /* water1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4C719FE1C68009BF9A3 /* water1.png */; };
+		8935E4D319FE1C68009BF9A3 /* water2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4C819FE1C68009BF9A3 /* water2.png */; };
+		8935E4D419FE1C68009BF9A3 /* water3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4C919FE1C68009BF9A3 /* water3.png */; };
+		8935E4D519FE1C68009BF9A3 /* water4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4CA19FE1C68009BF9A3 /* water4.png */; };
+		8935E4D619FE1C68009BF9A3 /* water5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4CB19FE1C68009BF9A3 /* water5.png */; };
+		8935E4EB19FE1CBA009BF9A3 /* completebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4D719FE1CBA009BF9A3 /* completebg.png */; };
+		8935E4EC19FE1CBA009BF9A3 /* cump1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4D819FE1CBA009BF9A3 /* cump1.png */; };
+		8935E4ED19FE1CBA009BF9A3 /* cump2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4D919FE1CBA009BF9A3 /* cump2.png */; };
+		8935E4EE19FE1CBA009BF9A3 /* cump3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4DA19FE1CBA009BF9A3 /* cump3.png */; };
+		8935E4EF19FE1CBA009BF9A3 /* cump4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4DB19FE1CBA009BF9A3 /* cump4.png */; };
+		8935E4F019FE1CBA009BF9A3 /* cump5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4DC19FE1CBA009BF9A3 /* cump5.png */; };
+		8935E4F119FE1CBA009BF9A3 /* effect1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4DD19FE1CBA009BF9A3 /* effect1.png */; };
+		8935E4F219FE1CBA009BF9A3 /* fishlife.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4DE19FE1CBA009BF9A3 /* fishlife.png */; };
+		8935E4F319FE1CBA009BF9A3 /* fishnum.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4DF19FE1CBA009BF9A3 /* fishnum.png */; };
+		8935E4F419FE1CBA009BF9A3 /* fishtales.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E019FE1CBA009BF9A3 /* fishtales.png */; };
+		8935E4F519FE1CBA009BF9A3 /* gameoverbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E119FE1CBA009BF9A3 /* gameoverbg.png */; };
+		8935E4F619FE1CBA009BF9A3 /* gobuy.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E219FE1CBA009BF9A3 /* gobuy.png */; };
+		8935E4F719FE1CBA009BF9A3 /* gold.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E319FE1CBA009BF9A3 /* gold.png */; };
+		8935E4F819FE1CBA009BF9A3 /* howtoplay.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E419FE1CBA009BF9A3 /* howtoplay.png */; };
+		8935E4F919FE1CBA009BF9A3 /* howtoplayT.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E519FE1CBA009BF9A3 /* howtoplayT.png */; };
+		8935E4FA19FE1CBA009BF9A3 /* medal1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E619FE1CBA009BF9A3 /* medal1.png */; };
+		8935E4FB19FE1CBA009BF9A3 /* medal2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E719FE1CBA009BF9A3 /* medal2.png */; };
+		8935E4FC19FE1CBA009BF9A3 /* medal3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E819FE1CBA009BF9A3 /* medal3.png */; };
+		8935E4FD19FE1CBA009BF9A3 /* medal4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E919FE1CBA009BF9A3 /* medal4.png */; };
+		8935E4FE19FE1CBA009BF9A3 /* pausebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4EA19FE1CBA009BF9A3 /* pausebg.png */; };
 		8954A32A19FE06CC002964D9 /* Fish1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32019FE06CC002964D9 /* Fish1.atlas */; };
 		8954A32B19FE06CC002964D9 /* Fish2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32119FE06CC002964D9 /* Fish2.atlas */; };
 		8954A32C19FE06CC002964D9 /* Fish3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A32219FE06CC002964D9 /* Fish3.atlas */; };
@@ -52,7 +81,6 @@
 		8999F18219DA3D61009B72CF /* OzgSKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8999F18119DA3D61009B72CF /* OzgSKButtonNode.swift */; };
 		89CCFE6619DAB73D00332828 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89CCFE6819DAB73D00332828 /* InfoPlist.strings */; };
 		89CCFE6919DAB74300332828 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89CCFE6B19DAB74300332828 /* Localizable.strings */; };
-		89EF312319E278A300CAFF3A /* OzgSKTextureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EF312219E278A300CAFF3A /* OzgSKTextureManager.swift */; };
 		89F995F019CD041400A91DEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F995EF19CD041400A91DEC /* AppDelegate.swift */; };
 		89F995F619CD041400A91DEC /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F995F519CD041400A91DEC /* GameViewController.swift */; };
 		89F995F919CD041400A91DEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89F995F719CD041400A91DEC /* Main.storyboard */; };
@@ -63,7 +91,6 @@
 		89F9961819CD04B100A91DEC /* EFStartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9961719CD04B100A91DEC /* EFStartScene.swift */; };
 		89F9961A19CD04DB00A91DEC /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9961919CD04DB00A91DEC /* GameConfig.swift */; };
 		89F9961C19CD051700A91DEC /* EFObjBaseFishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9961B19CD051700A91DEC /* EFObjBaseFishNode.swift */; };
-		89F9961E19CD052400A91DEC /* EFObjFishData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9961D19CD052400A91DEC /* EFObjFishData.swift */; };
 		89F9962219CD054700A91DEC /* EFObjJellyfishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9962119CD054700A91DEC /* EFObjJellyfishNode.swift */; };
 		89F9962419CD055800A91DEC /* EFObjPlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F9962319CD055800A91DEC /* EFObjPlayerNode.swift */; };
 /* End PBXBuildFile section */
@@ -79,8 +106,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8905AB7A19D906F70006CF15 /* cump */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cump; path = Resources/cump; sourceTree = "<group>"; };
-		8905AB7C19D906F70006CF15 /* Fishtales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fishtales; path = Resources/Fishtales; sourceTree = "<group>"; };
 		891049DE19CD300000CA223E /* audios_bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = audios_bg.mp3; path = Resources/audios_bg.mp3; sourceTree = "<group>"; };
 		891049DF19CD300000CA223E /* audios_btn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = audios_btn.wav; path = Resources/audios_btn.wav; sourceTree = "<group>"; };
 		891049E019CD300000CA223E /* audios_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = audios_complete.mp3; path = Resources/audios_complete.mp3; sourceTree = "<group>"; };
@@ -107,6 +132,37 @@
 		89104A1819CD352500CA223E /* EFStartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EFStartScene.sks; sourceTree = "<group>"; };
 		89104A1A19CD42CE00CA223E /* EFGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EFGameScene.sks; sourceTree = "<group>"; };
 		892E07A019E4000600E4EA68 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8935E4C119FE1C68009BF9A3 /* progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress.png; path = Resources/progress.png; sourceTree = "<group>"; };
+		8935E4C219FE1C68009BF9A3 /* protect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = protect.png; path = Resources/protect.png; sourceTree = "<group>"; };
+		8935E4C319FE1C68009BF9A3 /* protectb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = protectb.png; path = Resources/protectb.png; sourceTree = "<group>"; };
+		8935E4C419FE1C68009BF9A3 /* Startfish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Startfish.png; path = Resources/Startfish.png; sourceTree = "<group>"; };
+		8935E4C519FE1C68009BF9A3 /* Startfish2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Startfish2.png; path = Resources/Startfish2.png; sourceTree = "<group>"; };
+		8935E4C619FE1C68009BF9A3 /* Startfish3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Startfish3.png; path = Resources/Startfish3.png; sourceTree = "<group>"; };
+		8935E4C719FE1C68009BF9A3 /* water1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water1.png; path = Resources/water1.png; sourceTree = "<group>"; };
+		8935E4C819FE1C68009BF9A3 /* water2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water2.png; path = Resources/water2.png; sourceTree = "<group>"; };
+		8935E4C919FE1C68009BF9A3 /* water3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water3.png; path = Resources/water3.png; sourceTree = "<group>"; };
+		8935E4CA19FE1C68009BF9A3 /* water4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water4.png; path = Resources/water4.png; sourceTree = "<group>"; };
+		8935E4CB19FE1C68009BF9A3 /* water5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water5.png; path = Resources/water5.png; sourceTree = "<group>"; };
+		8935E4D719FE1CBA009BF9A3 /* completebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = completebg.png; path = Resources/completebg.png; sourceTree = "<group>"; };
+		8935E4D819FE1CBA009BF9A3 /* cump1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cump1.png; path = Resources/cump1.png; sourceTree = "<group>"; };
+		8935E4D919FE1CBA009BF9A3 /* cump2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cump2.png; path = Resources/cump2.png; sourceTree = "<group>"; };
+		8935E4DA19FE1CBA009BF9A3 /* cump3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cump3.png; path = Resources/cump3.png; sourceTree = "<group>"; };
+		8935E4DB19FE1CBA009BF9A3 /* cump4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cump4.png; path = Resources/cump4.png; sourceTree = "<group>"; };
+		8935E4DC19FE1CBA009BF9A3 /* cump5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cump5.png; path = Resources/cump5.png; sourceTree = "<group>"; };
+		8935E4DD19FE1CBA009BF9A3 /* effect1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = effect1.png; path = Resources/effect1.png; sourceTree = "<group>"; };
+		8935E4DE19FE1CBA009BF9A3 /* fishlife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fishlife.png; path = Resources/fishlife.png; sourceTree = "<group>"; };
+		8935E4DF19FE1CBA009BF9A3 /* fishnum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fishnum.png; path = Resources/fishnum.png; sourceTree = "<group>"; };
+		8935E4E019FE1CBA009BF9A3 /* fishtales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fishtales.png; path = Resources/fishtales.png; sourceTree = "<group>"; };
+		8935E4E119FE1CBA009BF9A3 /* gameoverbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameoverbg.png; path = Resources/gameoverbg.png; sourceTree = "<group>"; };
+		8935E4E219FE1CBA009BF9A3 /* gobuy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gobuy.png; path = Resources/gobuy.png; sourceTree = "<group>"; };
+		8935E4E319FE1CBA009BF9A3 /* gold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gold.png; path = Resources/gold.png; sourceTree = "<group>"; };
+		8935E4E419FE1CBA009BF9A3 /* howtoplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = howtoplay.png; path = Resources/howtoplay.png; sourceTree = "<group>"; };
+		8935E4E519FE1CBA009BF9A3 /* howtoplayT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = howtoplayT.png; path = Resources/howtoplayT.png; sourceTree = "<group>"; };
+		8935E4E619FE1CBA009BF9A3 /* medal1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal1.png; path = Resources/medal1.png; sourceTree = "<group>"; };
+		8935E4E719FE1CBA009BF9A3 /* medal2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal2.png; path = Resources/medal2.png; sourceTree = "<group>"; };
+		8935E4E819FE1CBA009BF9A3 /* medal3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal3.png; path = Resources/medal3.png; sourceTree = "<group>"; };
+		8935E4E919FE1CBA009BF9A3 /* medal4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal4.png; path = Resources/medal4.png; sourceTree = "<group>"; };
+		8935E4EA19FE1CBA009BF9A3 /* pausebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pausebg.png; path = Resources/pausebg.png; sourceTree = "<group>"; };
 		8954A32019FE06CC002964D9 /* Fish1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Fish1.atlas; path = Resources/Fish1.atlas; sourceTree = "<group>"; };
 		8954A32119FE06CC002964D9 /* Fish2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Fish2.atlas; path = Resources/Fish2.atlas; sourceTree = "<group>"; };
 		8954A32219FE06CC002964D9 /* Fish3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Fish3.atlas; path = Resources/Fish3.atlas; sourceTree = "<group>"; };
@@ -124,7 +180,6 @@
 		8999F18119DA3D61009B72CF /* OzgSKButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OzgSKButtonNode.swift; sourceTree = "<group>"; };
 		89CCFE6719DAB73D00332828 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89CCFE6A19DAB74300332828 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		89EF312219E278A300CAFF3A /* OzgSKTextureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OzgSKTextureManager.swift; sourceTree = "<group>"; };
 		89F995EA19CD041300A91DEC /* OzgGameEatFishSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OzgGameEatFishSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F995EE19CD041400A91DEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89F995EF19CD041400A91DEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,7 +194,6 @@
 		89F9961719CD04B100A91DEC /* EFStartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFStartScene.swift; sourceTree = "<group>"; };
 		89F9961919CD04DB00A91DEC /* GameConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		89F9961B19CD051700A91DEC /* EFObjBaseFishNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjBaseFishNode.swift; sourceTree = "<group>"; };
-		89F9961D19CD052400A91DEC /* EFObjFishData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjFishData.swift; sourceTree = "<group>"; };
 		89F9962119CD054700A91DEC /* EFObjJellyfishNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjJellyfishNode.swift; sourceTree = "<group>"; };
 		89F9962319CD055800A91DEC /* EFObjPlayerNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjPlayerNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +219,37 @@
 		891049D719CD2FBD00CA223E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8935E4D719FE1CBA009BF9A3 /* completebg.png */,
+				8935E4D819FE1CBA009BF9A3 /* cump1.png */,
+				8935E4D919FE1CBA009BF9A3 /* cump2.png */,
+				8935E4DA19FE1CBA009BF9A3 /* cump3.png */,
+				8935E4DB19FE1CBA009BF9A3 /* cump4.png */,
+				8935E4DC19FE1CBA009BF9A3 /* cump5.png */,
+				8935E4DD19FE1CBA009BF9A3 /* effect1.png */,
+				8935E4DE19FE1CBA009BF9A3 /* fishlife.png */,
+				8935E4DF19FE1CBA009BF9A3 /* fishnum.png */,
+				8935E4E019FE1CBA009BF9A3 /* fishtales.png */,
+				8935E4E119FE1CBA009BF9A3 /* gameoverbg.png */,
+				8935E4E219FE1CBA009BF9A3 /* gobuy.png */,
+				8935E4E319FE1CBA009BF9A3 /* gold.png */,
+				8935E4E419FE1CBA009BF9A3 /* howtoplay.png */,
+				8935E4E519FE1CBA009BF9A3 /* howtoplayT.png */,
+				8935E4E619FE1CBA009BF9A3 /* medal1.png */,
+				8935E4E719FE1CBA009BF9A3 /* medal2.png */,
+				8935E4E819FE1CBA009BF9A3 /* medal3.png */,
+				8935E4E919FE1CBA009BF9A3 /* medal4.png */,
+				8935E4EA19FE1CBA009BF9A3 /* pausebg.png */,
+				8935E4C119FE1C68009BF9A3 /* progress.png */,
+				8935E4C219FE1C68009BF9A3 /* protect.png */,
+				8935E4C319FE1C68009BF9A3 /* protectb.png */,
+				8935E4C419FE1C68009BF9A3 /* Startfish.png */,
+				8935E4C519FE1C68009BF9A3 /* Startfish2.png */,
+				8935E4C619FE1C68009BF9A3 /* Startfish3.png */,
+				8935E4C719FE1C68009BF9A3 /* water1.png */,
+				8935E4C819FE1C68009BF9A3 /* water2.png */,
+				8935E4C919FE1C68009BF9A3 /* water3.png */,
+				8935E4CA19FE1C68009BF9A3 /* water4.png */,
+				8935E4CB19FE1C68009BF9A3 /* water5.png */,
 				8954A33419FE0785002964D9 /* gold.atlas */,
 				8954A32019FE06CC002964D9 /* Fish1.atlas */,
 				8954A32119FE06CC002964D9 /* Fish2.atlas */,
@@ -176,8 +261,6 @@
 				8954A32719FE06CC002964D9 /* playerBFish.atlas */,
 				8954A32819FE06CC002964D9 /* playerFish.atlas */,
 				8954A32919FE06CC002964D9 /* playerMFish.atlas */,
-				8905AB7A19D906F70006CF15 /* cump */,
-				8905AB7C19D906F70006CF15 /* Fishtales */,
 				891049DE19CD300000CA223E /* audios_bg.mp3 */,
 				891049DF19CD300000CA223E /* audios_btn.wav */,
 				891049E019CD300000CA223E /* audios_complete.mp3 */,
@@ -250,7 +333,6 @@
 				89F9961519CD049B00A91DEC /* EFGameScene.swift */,
 				89104A1819CD352500CA223E /* EFStartScene.sks */,
 				89F9961719CD04B100A91DEC /* EFStartScene.swift */,
-				89F9961D19CD052400A91DEC /* EFObjFishData.swift */,
 				89F9961B19CD051700A91DEC /* EFObjBaseFishNode.swift */,
 				8981D72D19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift */,
 				89F9962319CD055800A91DEC /* EFObjPlayerNode.swift */,
@@ -258,7 +340,6 @@
 				89104A1619CD33C200CA223E /* EFObjEnemyFishNode.swift */,
 				8999F17F19DA3D41009B72CF /* OzgSwiftUtility.swift */,
 				8999F18119DA3D61009B72CF /* OzgSKButtonNode.swift */,
-				89EF312219E278A300CAFF3A /* OzgSKTextureManager.swift */,
 			);
 			path = OzgGameEatFishSwift;
 			sourceTree = "<group>";
@@ -368,13 +449,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8935E4EC19FE1CBA009BF9A3 /* cump1.png in Resources */,
+				8935E4FA19FE1CBA009BF9A3 /* medal1.png in Resources */,
 				89104A0919CD300000CA223E /* btn2_up.png in Resources */,
+				8935E4D619FE1C68009BF9A3 /* water5.png in Resources */,
+				8935E4EB19FE1CBA009BF9A3 /* completebg.png in Resources */,
 				89104A1119CD300000CA223E /* pause_up.png in Resources */,
 				8954A33219FE06CC002964D9 /* playerFish.atlas in Resources */,
 				89104A0119CD300000CA223E /* audios_jellyfish.mp3 in Resources */,
+				8935E4FD19FE1CBA009BF9A3 /* medal4.png in Resources */,
 				892E07A119E4000600E4EA68 /* Images.xcassets in Resources */,
 				891049F919CD300000CA223E /* audios_bg.mp3 in Resources */,
+				8935E4CE19FE1C68009BF9A3 /* protectb.png in Resources */,
 				8954A32A19FE06CC002964D9 /* Fish1.atlas in Resources */,
+				8935E4F119FE1CBA009BF9A3 /* effect1.png in Resources */,
 				89104A0519CD300000CA223E /* bg3.png in Resources */,
 				89104A0819CD300000CA223E /* btn2_dw.png in Resources */,
 				89104A1919CD352500CA223E /* EFStartScene.sks in Resources */,
@@ -382,10 +470,9 @@
 				8954A32B19FE06CC002964D9 /* Fish2.atlas in Resources */,
 				8954A32E19FE06CC002964D9 /* Fish5.atlas in Resources */,
 				8954A33319FE06CC002964D9 /* playerMFish.atlas in Resources */,
+				8935E4CF19FE1C68009BF9A3 /* Startfish.png in Resources */,
 				8954A33019FE06CC002964D9 /* jellyfish.atlas in Resources */,
-				8905AB7F19D906F70006CF15 /* Fishtales in Resources */,
 				891049FC19CD300000CA223E /* audios_eatfish1.mp3 in Resources */,
-				8905AB7D19D906F70006CF15 /* cump in Resources */,
 				891049FE19CD300000CA223E /* audios_eatgold.mp3 in Resources */,
 				891049FB19CD300000CA223E /* audios_complete.mp3 in Resources */,
 				89104A1B19CD42CE00CA223E /* EFGameScene.sks in Resources */,
@@ -394,23 +481,46 @@
 				891049FD19CD300000CA223E /* audios_eatfish2.mp3 in Resources */,
 				89104A0219CD300000CA223E /* audios_playbyeat.mp3 in Resources */,
 				89F995FE19CD041400A91DEC /* LaunchScreen.xib in Resources */,
+				8935E4F519FE1CBA009BF9A3 /* gameoverbg.png in Resources */,
 				89104A0319CD300000CA223E /* bg1.png in Resources */,
 				8974EA4019D970C00079CED6 /* blister.png in Resources */,
+				8935E4CC19FE1C68009BF9A3 /* progress.png in Resources */,
+				8935E4F619FE1CBA009BF9A3 /* gobuy.png in Resources */,
+				8935E4D319FE1C68009BF9A3 /* water2.png in Resources */,
 				89CCFE6919DAB74300332828 /* Localizable.strings in Resources */,
+				8935E4FB19FE1CBA009BF9A3 /* medal2.png in Resources */,
+				8935E4F819FE1CBA009BF9A3 /* howtoplay.png in Resources */,
 				8954A32F19FE06CC002964D9 /* Fish6.atlas in Resources */,
+				8935E4D119FE1C68009BF9A3 /* Startfish3.png in Resources */,
 				89104A1019CD300000CA223E /* pause_dw.png in Resources */,
+				8935E4F919FE1CBA009BF9A3 /* howtoplayT.png in Resources */,
+				8935E4FE19FE1CBA009BF9A3 /* pausebg.png in Resources */,
+				8935E4D219FE1C68009BF9A3 /* water1.png in Resources */,
 				89104A0A19CD300000CA223E /* Default.png in Resources */,
 				89CCFE6619DAB73D00332828 /* InfoPlist.strings in Resources */,
+				8935E4F219FE1CBA009BF9A3 /* fishlife.png in Resources */,
 				891049FF19CD300000CA223E /* audios_fishstart.mp3 in Resources */,
 				89104A0619CD300000CA223E /* btn1_dw.png in Resources */,
+				8935E4F019FE1CBA009BF9A3 /* cump5.png in Resources */,
 				89104A1319CD300000CA223E /* scene_start_title.png in Resources */,
+				8935E4F319FE1CBA009BF9A3 /* fishnum.png in Resources */,
 				89104A1219CD300000CA223E /* progressk.png in Resources */,
+				8935E4EE19FE1CBA009BF9A3 /* cump3.png in Resources */,
+				8935E4F719FE1CBA009BF9A3 /* gold.png in Resources */,
 				8954A33119FE06CC002964D9 /* playerBFish.atlas in Resources */,
+				8935E4D519FE1C68009BF9A3 /* water4.png in Resources */,
 				89104A0019CD300000CA223E /* audios_growth.mp3 in Resources */,
+				8935E4EF19FE1CBA009BF9A3 /* cump4.png in Resources */,
+				8935E4D419FE1C68009BF9A3 /* water3.png in Resources */,
+				8935E4FC19FE1CBA009BF9A3 /* medal3.png in Resources */,
 				89F995F919CD041400A91DEC /* Main.storyboard in Resources */,
+				8935E4F419FE1CBA009BF9A3 /* fishtales.png in Resources */,
 				89104A0719CD300000CA223E /* btn1_up.png in Resources */,
+				8935E4ED19FE1CBA009BF9A3 /* cump2.png in Resources */,
 				8954A32D19FE06CC002964D9 /* Fish4.atlas in Resources */,
+				8935E4CD19FE1C68009BF9A3 /* protect.png in Resources */,
 				8954A32C19FE06CC002964D9 /* Fish3.atlas in Resources */,
+				8935E4D019FE1C68009BF9A3 /* Startfish2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,9 +549,7 @@
 				89F9961C19CD051700A91DEC /* EFObjBaseFishNode.swift in Sources */,
 				8981D72E19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift in Sources */,
 				89F9961419CD047B00A91DEC /* EFBaseScene.swift in Sources */,
-				89EF312319E278A300CAFF3A /* OzgSKTextureManager.swift in Sources */,
 				89F995F019CD041400A91DEC /* AppDelegate.swift in Sources */,
-				89F9961E19CD052400A91DEC /* EFObjFishData.swift in Sources */,
 				89F9962419CD055800A91DEC /* EFObjPlayerNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
