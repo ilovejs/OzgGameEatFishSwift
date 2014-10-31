@@ -20,37 +20,28 @@ class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
         
         self.m_type = type
         
-        var animName: String?
-        
         switch self.m_type! {
         case EnemyFishType.Fish2:
-            self.m_textureAtlas = SKTextureAtlas(named: "Fish2")
-            animName = "Fish2_"
+            self.m_animFrames = EFObjFishData.fish2()
             
         case EnemyFishType.Fish3:
-            self.m_textureAtlas = SKTextureAtlas(named: "Fish3")
-            animName = "Fish3_"
+            self.m_animFrames = EFObjFishData.fish3()
             
         case EnemyFishType.Fish4:
-            self.m_textureAtlas = SKTextureAtlas(named: "Fish4")
-            animName = "Fish4_"
+            self.m_animFrames = EFObjFishData.fish4()
             
         case EnemyFishType.Fish5:
-            self.m_textureAtlas = SKTextureAtlas(named: "Fish5")
-            animName = "Fish5_"
+            self.m_animFrames = EFObjFishData.fish5()
             
         case EnemyFishType.Fish6:
-            self.m_textureAtlas = SKTextureAtlas(named: "Fish6")
-            animName = "Fish6_"
+            self.m_animFrames = EFObjFishData.fish6()
             
         default:
-            self.m_textureAtlas = SKTextureAtlas(named: "Fish1")
-            animName = "Fish1_"
+            self.m_animFrames = EFObjFishData.fish1()
             
         }
         
-        var frame = (self.m_textureAtlas?.textureNames[0] as? String)!
-        var fish = SKSpriteNode(texture: (self.m_textureAtlas?.textureNamed(frame))!)
+        var fish = SKSpriteNode(imageNamed: (self.m_animFrames?[0])!)
         fish.position = CGPoint.zeroPoint
         fish.name = "fish"
         
@@ -85,7 +76,7 @@ class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
         fish.physicsBody?.categoryBitMask = 1
         self.addChild(fish)
                 
-        self.playAnim(animName!)
+        self.playAnim()
     }
     
     deinit {

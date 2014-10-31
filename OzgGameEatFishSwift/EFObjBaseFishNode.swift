@@ -12,8 +12,7 @@ class EFObjBaseFishNode: SKNode {
     var m_orientation: Orientation? //朝向
     var m_isMoving: Bool?
     
-    var m_textureAtlas: SKTextureAtlas?
-    var m_animName: String?
+    var m_animFrames: Array<String>?
     
     override init() {
         super.init()
@@ -112,20 +111,14 @@ class EFObjBaseFishNode: SKNode {
     }
     
     func playAnim() {
-        self.playAnim(self.m_animName!)
-    }
-    
-    func playAnim(animName: String) {
-        self.m_animName = animName
         
         var fish = self.childNodeWithName("fish") as SKSpriteNode?
-        if fish != nil && self.m_textureAtlas != nil {
+        if fish != nil && self.m_animFrames != nil {
             
             var frames: Array<SKTexture> = []
             
-            for var i = 0; i < (self.m_textureAtlas?.textureNames.count)!; i++ {
-                var frame = self.m_animName!.stringByAppendingFormat("%i", i + 1)
-                frames.append((self.m_textureAtlas?.textureNamed(frame))!)
+            for var i = 0; i < (self.m_animFrames?.count)!; i++ {
+                frames.append(SKTexture(imageNamed: (self.m_animFrames?[i])!))
             }
             
             //这个动画执行了之后，第二帧以后会跑到最上面，不知道是什么问题

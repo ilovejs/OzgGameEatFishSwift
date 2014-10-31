@@ -42,7 +42,7 @@ class EFBaseScene: SKScene, AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
         
         for var i = 0; i < self.m_effectAudioList?.count; i++ {
-            if (self.m_effectAudioList?[i])! == player {
+            if self.m_effectAudioList?[i] != nil && (self.m_effectAudioList?[i])! == player {
                 self.m_effectAudioList?.removeAtIndex(i)
             }
         }

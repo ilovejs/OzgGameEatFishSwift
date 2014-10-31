@@ -16,14 +16,13 @@ class EFObjPlayerNode: EFObjBaseFishNode {
     override init() {
         super.init()
         
-        self.m_textureAtlas = SKTextureAtlas(named: "playerFish")
+        self.m_animFrames = EFObjFishData.playerFish()
         
         self.m_isMoving = false
         self.m_status = Status.Small
         self.m_isInvincible = false
         
-        var frame = (self.m_textureAtlas?.textureNames[0] as? String)!
-        var fish = SKSpriteNode(texture: (self.m_textureAtlas?.textureNamed(frame))!)
+        var fish = SKSpriteNode(imageNamed: (self.m_animFrames?[0])!)
         fish.position = CGPoint.zeroPoint
         fish.name = "fish"
         fish.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(16, 16))
@@ -65,26 +64,26 @@ class EFObjPlayerNode: EFObjBaseFishNode {
         switch self.m_status! {
         
         case Status.Normal:
-            self.m_textureAtlas = SKTextureAtlas(named: "playerMFish")
+            self.m_animFrames = EFObjFishData.playerMFish()
             animName = "playerMFish"
             
             water?.setScale(10.0)
             
         case Status.Big:
-            self.m_textureAtlas = SKTextureAtlas(named: "playerBFish")
+            self.m_animFrames = EFObjFishData.playerBFish()
             animName = "playerBFish"
             
             water?.setScale(15.0)
             
         default:
-            self.m_textureAtlas = SKTextureAtlas(named: "playerFish")
+            self.m_animFrames = EFObjFishData.playerFish()
             animName = "playerFish"
             
             water?.setScale(5.0)
             
         }
         
-        self.playAnim(animName!)
+        self.playAnim()
     }
     
     func invincible() {
