@@ -33,13 +33,13 @@
 		8935E4FB19FE1CBA009BF9A3 /* medal2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E719FE1CBA009BF9A3 /* medal2.png */; };
 		8935E4FC19FE1CBA009BF9A3 /* medal3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E819FE1CBA009BF9A3 /* medal3.png */; };
 		8935E4FD19FE1CBA009BF9A3 /* medal4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8935E4E919FE1CBA009BF9A3 /* medal4.png */; };
+		893E27221A048B9900D53B71 /* Fishall.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = 893E27201A048B9900D53B71 /* Fishall.atlasc */; };
+		893E27231A048B9900D53B71 /* Fishtales.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = 893E27211A048B9900D53B71 /* Fishtales.atlasc */; };
 		8954A33519FE0785002964D9 /* gold.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8954A33419FE0785002964D9 /* gold.atlas */; };
 		8974EA4019D970C00079CED6 /* blister.png in Resources */ = {isa = PBXBuildFile; fileRef = 8974EA3F19D970C00079CED6 /* blister.png */; };
 		8981D72E19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8981D72D19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift */; };
 		8999F18019DA3D41009B72CF /* OzgSwiftUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8999F17F19DA3D41009B72CF /* OzgSwiftUtility.swift */; };
 		8999F18219DA3D61009B72CF /* OzgSKButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8999F18119DA3D61009B72CF /* OzgSKButtonNode.swift */; };
-		89B8D6911A03C89800AD0A8E /* Fishall.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = 89B8D68F1A03C89800AD0A8E /* Fishall.atlasc */; };
-		89B8D6921A03C89800AD0A8E /* Fishtales.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = 89B8D6901A03C89800AD0A8E /* Fishtales.atlasc */; };
 		89B8D7011A03CD9400AD0A8E /* EFObjFishData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B8D7001A03CD9400AD0A8E /* EFObjFishData.swift */; };
 		89CCFE6619DAB73D00332828 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89CCFE6819DAB73D00332828 /* InfoPlist.strings */; };
 		89CCFE6919DAB74300332828 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89CCFE6B19DAB74300332828 /* Localizable.strings */; };
@@ -94,13 +94,13 @@
 		8935E4E719FE1CBA009BF9A3 /* medal2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal2.png; path = Resources/medal2.png; sourceTree = "<group>"; };
 		8935E4E819FE1CBA009BF9A3 /* medal3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal3.png; path = Resources/medal3.png; sourceTree = "<group>"; };
 		8935E4E919FE1CBA009BF9A3 /* medal4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = medal4.png; path = Resources/medal4.png; sourceTree = "<group>"; };
+		893E27201A048B9900D53B71 /* Fishall.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fishall.atlasc; path = Resources/Fishall.atlasc; sourceTree = "<group>"; };
+		893E27211A048B9900D53B71 /* Fishtales.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fishtales.atlasc; path = Resources/Fishtales.atlasc; sourceTree = "<group>"; };
 		8954A33419FE0785002964D9 /* gold.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = gold.atlas; path = Resources/gold.atlas; sourceTree = "<group>"; };
 		8974EA3F19D970C00079CED6 /* blister.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blister.png; path = Resources/blister.png; sourceTree = "<group>"; };
 		8981D72D19E8E4C5002987C8 /* EFObjBaseEnemyFishNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjBaseEnemyFishNode.swift; sourceTree = "<group>"; };
 		8999F17F19DA3D41009B72CF /* OzgSwiftUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OzgSwiftUtility.swift; sourceTree = "<group>"; };
 		8999F18119DA3D61009B72CF /* OzgSKButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OzgSKButtonNode.swift; sourceTree = "<group>"; };
-		89B8D68F1A03C89800AD0A8E /* Fishall.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fishall.atlasc; path = Resources/Fishall.atlasc; sourceTree = "<group>"; };
-		89B8D6901A03C89800AD0A8E /* Fishtales.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fishtales.atlasc; path = Resources/Fishtales.atlasc; sourceTree = "<group>"; };
 		89B8D7001A03CD9400AD0A8E /* EFObjFishData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFObjFishData.swift; sourceTree = "<group>"; };
 		89CCFE6719DAB73D00332828 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		89CCFE6A19DAB74300332828 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -143,8 +143,8 @@
 		891049D719CD2FBD00CA223E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				89B8D68F1A03C89800AD0A8E /* Fishall.atlasc */,
-				89B8D6901A03C89800AD0A8E /* Fishtales.atlasc */,
+				893E27201A048B9900D53B71 /* Fishall.atlasc */,
+				893E27211A048B9900D53B71 /* Fishtales.atlasc */,
 				8935E4DD19FE1CBA009BF9A3 /* effect1.png */,
 				8935E4E319FE1CBA009BF9A3 /* gold.png */,
 				8935E4E619FE1CBA009BF9A3 /* medal1.png */,
@@ -336,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8935E4FA19FE1CBA009BF9A3 /* medal1.png in Resources */,
+				893E27231A048B9900D53B71 /* Fishtales.atlasc in Resources */,
 				89104A0119CD300000CA223E /* audios_jellyfish.mp3 in Resources */,
 				8935E4FD19FE1CBA009BF9A3 /* medal4.png in Resources */,
 				892E07A119E4000600E4EA68 /* Images.xcassets in Resources */,
@@ -353,16 +354,15 @@
 				89104A0419CD300000CA223E /* bg2.png in Resources */,
 				891049FD19CD300000CA223E /* audios_eatfish2.mp3 in Resources */,
 				89104A0219CD300000CA223E /* audios_playbyeat.mp3 in Resources */,
-				89B8D6921A03C89800AD0A8E /* Fishtales.atlasc in Resources */,
 				89F995FE19CD041400A91DEC /* LaunchScreen.xib in Resources */,
 				89104A0319CD300000CA223E /* bg1.png in Resources */,
 				8974EA4019D970C00079CED6 /* blister.png in Resources */,
 				89CCFE6919DAB74300332828 /* Localizable.strings in Resources */,
 				8935E4FB19FE1CBA009BF9A3 /* medal2.png in Resources */,
+				893E27221A048B9900D53B71 /* Fishall.atlasc in Resources */,
 				89104A0A19CD300000CA223E /* Default.png in Resources */,
 				89CCFE6619DAB73D00332828 /* InfoPlist.strings in Resources */,
 				891049FF19CD300000CA223E /* audios_fishstart.mp3 in Resources */,
-				89B8D6911A03C89800AD0A8E /* Fishall.atlasc in Resources */,
 				8935E4F719FE1CBA009BF9A3 /* gold.png in Resources */,
 				89104A0019CD300000CA223E /* audios_growth.mp3 in Resources */,
 				8935E4FC19FE1CBA009BF9A3 /* medal3.png in Resources */,

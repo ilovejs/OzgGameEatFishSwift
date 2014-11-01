@@ -18,6 +18,9 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     var m_bg: String?
     
+    var m_updateTime: Float?
+    var m_updatePrevTime: Float?
+    
     deinit {
         
         println("EFGameScene释放")
@@ -154,6 +157,15 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     
     override func update(currentTime: NSTimeInterval) {
         
+        if self.m_updateTime == nil {
+            self.m_updateTime = Float(currentTime)
+            self.m_updatePrevTime = Float(currentTime)
+        }
+        else {
+            self.m_updateTime = Float(currentTime) - self.m_updatePrevTime!
+            self.m_updatePrevTime = Float(currentTime)
+        }
+        
         if self.m_isPauseUpdate! == true {
             return
         }
@@ -219,6 +231,17 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         if OzgSwiftUtility.randomRange(0, maxValue: 1) <= GameConfig.enemyFish6 {
             self.enemyFishEmergence(EFObjEnemyFishNode(type: EFObjEnemyFishNode.EnemyFishType.Fish6))
             
+        }
+        
+        //更新enemyfish的m_moveTimeElapsed
+        for var i = 0; i < (fishNode?.children.count)!; i++ {
+            var item: SKNode = (fishNode?.children[i])! as SKNode
+            if item.isKindOfClass(EFObjEnemyFishNode) {
+                
+                if (item as EFObjEnemyFishNode).m_isMoving! == true {
+                    (item as EFObjEnemyFishNode).m_moveTimeElapsed = (item as EFObjEnemyFishNode).m_moveTimeElapsed! + self.m_updateTime!
+                }
+            }
         }
         
     }
@@ -442,6 +465,13 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
         moveTime = 10.0 + (moveTime * OzgSwiftUtility.randomRange(0, maxValue: 1))
         
         enemyFishNode.m_isMoving = true
+        
+        if enemyFishNode.isKindOfClass(EFObjEnemyFishNode) {
+            (enemyFishNode as EFObjEnemyFishNode).m_moveTime = moveTime
+            (enemyFishNode as EFObjEnemyFishNode).m_moveStartPoint = startPoint
+            (enemyFishNode as EFObjEnemyFishNode).m_moveEndPoint = endPoint
+            
+        }
         
         enemyFishNode.runAction(SKAction.moveTo(endPoint!, duration: NSTimeInterval(moveTime)), completion: {
             enemyFishNode.removeFromParent()

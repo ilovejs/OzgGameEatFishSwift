@@ -15,10 +15,16 @@ class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
 
     var m_type: EnemyFishType?
     
+    var m_moveTime: Float?
+    var m_moveStartPoint: CGPoint?
+    var m_moveEndPoint: CGPoint?
+    var m_moveTimeElapsed: Float?
+    
     convenience init(type: EnemyFishType) {
         self.init()
         
         self.m_type = type
+        self.m_moveTimeElapsed = 0
         
         switch self.m_type! {
         case EnemyFishType.Fish2:
@@ -82,5 +88,34 @@ class EFObjEnemyFishNode: EFObjBaseEnemyFishNode {
     deinit {
         println("EFObjEnemyFishNode释放")
     }
+    
+    //麻痹
+    override func paralysis() {
         
+        if self.m_isMoving == false {
+            return
+        }
+        
+        self.m_isMoving = false
+        self.removeAllActions()
+        
+        var fish = self.childNodeWithName("fish") as SKSpriteNode?
+        fish?.removeAllActions()
+        
+        var act1 = SKAction.moveBy(CGVectorMake(-3, 0), duration: 0.01)
+        var act2 = SKAction.moveBy(CGVectorMake(6, 0), duration: 0.02)
+        var act3 = act2.reversedAction()
+        var act4 = SKAction.moveBy(CGVectorMake(3, 0), duration: 0.01)
+        
+        //麻痹5秒后恢复正常
+        self.runAction(SKAction.sequence([ act1, act2, act3, act4, SKAction.waitForDuration(5) ]), completion: {
+            self.playAnim()
+            self.m_isMoving = true
+            
+            self.runAction(SKAction.moveTo(self.m_moveEndPoint!, duration: NSTimeInterval(self.m_moveTime! - self.m_moveTimeElapsed!)), completion: {
+                self.removeFromParent()
+            })
+        })
+    }
+    
 }

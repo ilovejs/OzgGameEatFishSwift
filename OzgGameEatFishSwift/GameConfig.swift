@@ -61,7 +61,7 @@ class GameConfig {
     
     //吃够多少条鱼过一关
     class var stageClear: Int {
-        return 2 //小鱼+1，中鱼+2，大鱼+3
+        return 500 //小鱼+1，中鱼+2，大鱼+3
     }
     
     //升级到中等或大的所需分数
