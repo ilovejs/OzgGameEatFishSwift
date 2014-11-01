@@ -23,7 +23,16 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //声音的处理
+        if NSUserDefaults.standardUserDefaults().objectIsForcedForKey("sound") == false {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "sound")
+        }
+        if NSUserDefaults.standardUserDefaults().objectIsForcedForKey("effect") == false {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "effect")
+        }
+        NSUserDefaults.standardUserDefaults().synchronize()
+                
         if let scene = EFStartScene.unarchiveFromFile("EFStartScene") as EFStartScene? {
             // Configure the view.
             let skView = self.view as SKView

@@ -17,6 +17,13 @@ class EFBaseScene: SKScene, AVAudioPlayerDelegate {
             player?.play()
         }
         
+        if NSUserDefaults.standardUserDefaults().boolForKey("sound") == true {
+            player?.volume = 1
+        }
+        else {
+            player?.volume = 0
+        }
+        
     }
     
     class var shareBgAudio: AVAudioPlayer? {
@@ -24,6 +31,17 @@ class EFBaseScene: SKScene, AVAudioPlayerDelegate {
             static let instance: AVAudioPlayer? = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("audios_bg", ofType: "mp3")!), error: nil)
         }
         return Static.instance
+    }
+    
+    func enabledBgAudio(val: Bool) {
+        var player = EFBaseScene.shareBgAudio
+        
+        if val == true {
+            player?.volume = 1
+        }
+        else {
+            player?.volume = 0
+        }
     }
     
     func playEffectAudio(audio: String) {
@@ -34,6 +52,11 @@ class EFBaseScene: SKScene, AVAudioPlayerDelegate {
         
         var player: AVAudioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(audio.stringByDeletingPathExtension, ofType: audio.pathExtension)!), error: nil)
         player.numberOfLoops = 0
+        
+        if NSUserDefaults.standardUserDefaults().boolForKey("effect") == false {
+            player.volume = 0
+        }
+        
         player.delegate = self
         self.m_effectAudioList?.append(player)
         player.play()

@@ -58,29 +58,27 @@ class EFObjPlayerNode: EFObjBaseFishNode {
         self.m_status = status
         
         var water = self.childNodeWithName("water") as SKSpriteNode?
-        
-        var animName: String?
+        var fish = self.childNodeWithName("fish") as SKSpriteNode?
         
         switch self.m_status! {
         
         case Status.Normal:
             self.m_animFrames = EFObjFishData.playerMFish()
-            animName = "playerMFish"
             
             water?.setScale(10.0)
+            fish?.setScale(1.5)
             
         case Status.Big:
             self.m_animFrames = EFObjFishData.playerBFish()
-            animName = "playerBFish"
             
             water?.setScale(15.0)
+            fish?.setScale(2.0)
             
         default:
             self.m_animFrames = EFObjFishData.playerFish()
-            animName = "playerFish"
             
             water?.setScale(5.0)
-            
+            fish?.setScale(1.0)
         }
         
         self.playAnim()

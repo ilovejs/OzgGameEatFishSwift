@@ -327,6 +327,77 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
     //暂停
     func scenePause() {
         
+        if self.childNodeWithName("pause_node") != nil {
+            return
+        }
+        
+        var fishNode = self.childNodeWithName("fish_node")
+        for var i = 0; i < (fishNode?.children.count)!; i++ {
+            var item: SKNode = (fishNode?.children[i])! as SKNode
+            item.paused = true
+            
+        }
+        
+        self.m_isPauseUpdate = true
+        self.enabledTouchEvent(false)
+        
+        //暂停界面
+        
+        var pauseNode = SKNode()
+        pauseNode.position = CGPoint.zeroPoint
+        pauseNode.name = "pause_node"
+        self.addChild(pauseNode)
+        
+        var pauseBg = SKSpriteNode(imageNamed: "pausebg")
+        pauseBg.position = CGPointMake(self.size.width / 2, self.size.height / 2)
+        pauseNode.addChild(pauseBg)
+        
+        var btnResume = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: NSLocalizedString("GameScene_PauseBtnResume", tableName: nil, comment: "resume"))
+        btnResume.position = CGPointMake(180, 470)
+        btnResume.name = "btn_resume"
+        btnResume.setTouchedCallBack(self.onButton)
+        pauseNode.addChild(btnResume)
+        
+        var btnSound = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: "Off")
+        btnSound.position = CGPointMake(180, 364)
+        btnSound.name = "btn_sound"
+        btnSound.setTouchedCallBack(self.onButton)
+        if NSUserDefaults.standardUserDefaults().boolForKey("sound") == true {
+            var text = NSLocalizedString("GameScene_PauseBtnBgSound", tableName: nil, comment: "Sound")
+            btnSound.setTitleText(text + "(" + NSLocalizedString("GameScene_SwitchOff", tableName: nil, comment: "Off") + ")")
+        }
+        else {
+            var text = NSLocalizedString("GameScene_PauseBtnBgSound", tableName: nil, comment: "Sound")
+            btnSound.setTitleText(text + "(" + NSLocalizedString("GameScene_SwitchOn", tableName: nil, comment: "On") + ")")
+        }
+        pauseNode.addChild(btnSound)
+        
+        var btnEffect = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: "Off")
+        btnEffect.position = CGPointMake(180, 257)
+        btnEffect.name = "btn_effect"
+        btnEffect.setTouchedCallBack(self.onButton)
+        if NSUserDefaults.standardUserDefaults().boolForKey("effect") == true {
+            var text = NSLocalizedString("GameScene_PauseBtnEffect", tableName: nil, comment: "Effect")
+            btnEffect.setTitleText(text + "(" + NSLocalizedString("GameScene_SwitchOff", tableName: nil, comment: "Off") + ")")
+        }
+        else {
+            var text = NSLocalizedString("GameScene_PauseBtnEffect", tableName: nil, comment: "Effect")
+            btnEffect.setTitleText(text + "(" + NSLocalizedString("GameScene_SwitchOn", tableName: nil, comment: "On") + ")")
+        }
+        pauseNode.addChild(btnEffect)
+        
+        var btnExit = OzgSKButtonNode(normalImg: "btn1_up", downImg: "btn1_dw", disableImg: "btn1_dw", title: NSLocalizedString("GameScene_PauseBtnQuit", tableName: nil, comment: "exit"))
+        btnExit.position = CGPointMake(180, 150)
+        btnExit.name = "btn_exit"
+        btnExit.setTouchedCallBack(self.onButton)
+        pauseNode.addChild(btnExit)
+        
+        var labGithub = SKLabelNode(text: "github:https://github.com/ouzhigang/OzgGameEatFishSwift")
+        labGithub.position = CGPointMake(650, 320)
+        labGithub.fontName = GameConfig.globalFontName01
+        labGithub.fontSize = 20
+        pauseNode.addChild(labGithub)
+        
     }
     
     func onButton(sender: AnyObject!) {
@@ -343,18 +414,58 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
             //继续游戏
             self.playEffectAudio("audios_btn.wav")
             
+            var fishNode = self.childNodeWithName("fish_node")
+            for var i = 0; i < (fishNode?.children.count)!; i++ {
+                var item: SKNode = (fishNode?.children[i])! as SKNode
+                item.paused = false
+                
+            }
+            
+            self.m_isPauseUpdate = false
+            self.enabledTouchEvent(true)
+            
+            var pauseNode = self.childNodeWithName("pause_node")
+            pauseNode?.removeFromParent()
             
         }
         else if btn.name! == "btn_sound" {
             //背景音乐
             self.playEffectAudio("audios_btn.wav")
             
+            if NSUserDefaults.standardUserDefaults().boolForKey("sound") == true {
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "sound")
+                self.enabledBgAudio(false)
+                
+                var text = NSLocalizedString("GameScene_PauseBtnBgSound", tableName: nil, comment: "Sound")
+                btn.setTitleText(text + "(" + NSLocalizedString("GameScene_SwitchOn", tableName: nil, comment: "On") + ")")
+            }
+            else {
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "sound")
+                self.enabledBgAudio(true)
+                
+                var text = NSLocalizedString("GameScene_PauseBtnBgSound", tableName: nil, comment: "Sound")
+                btn.setTitleText(text + "(" + NSLocalizedString("GameScene_SwitchOff", tableName: nil, comment: "Off") + ")")
+            }
+            NSUserDefaults.standardUserDefaults().synchronize()
             
         }
         else if btn.name! == "btn_effect" {
             //效果声音
             self.playEffectAudio("audios_btn.wav")
             
+            if NSUserDefaults.standardUserDefaults().boolForKey("effect") == true {
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "effect")
+                
+                var text = NSLocalizedString("GameScene_PauseBtnEffect", tableName: nil, comment: "Effect")
+                btn.setTitleText(text + "(" + NSLocalizedString("GameScene_SwitchOn", tableName: nil, comment: "On") + ")")
+            }
+            else {
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "effect")
+                
+                var text = NSLocalizedString("GameScene_PauseBtnEffect", tableName: nil, comment: "Effect")
+                btn.setTitleText(text + "(" + NSLocalizedString("GameScene_SwitchOff", tableName: nil, comment: "Off") + ")")
+            }
+            NSUserDefaults.standardUserDefaults().synchronize()
             
         }
         else if btn.name! == "btn_exit" {
@@ -820,14 +931,14 @@ class EFGameScene: EFBaseScene, SKPhysicsContactDelegate, UIAlertViewDelegate {
             self.m_score = self.m_score! + GameConfig.scoreFish3
             self.m_eatFish = self.m_eatFish! + GameConfig.scoreFish3
             self.m_eatFishTotal = self.m_eatFishTotal! + 1
-            self.m_eatFishTotalType1And2 = self.m_eatFishTotalType3! + 1
+            self.m_eatFishTotalType3 = self.m_eatFishTotalType3! + 1
             
         case EFObjEnemyFishNode.EnemyFishType.Fish4:
             
             self.m_score = self.m_score! + GameConfig.scoreFish4
             self.m_eatFish = self.m_eatFish! + GameConfig.scoreFish4
             self.m_eatFishTotal = self.m_eatFishTotal! + 1
-            self.m_eatFishTotalType1And2 = self.m_eatFishTotalType4! + 1
+            self.m_eatFishTotalType4 = self.m_eatFishTotalType4! + 1
             
         default:
             
